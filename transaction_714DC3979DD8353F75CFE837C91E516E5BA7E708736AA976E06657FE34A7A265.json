@@ -1,0 +1,98 @@
+{
+    "height": "568661",
+    "txhash": "714DC3979DD8353F75CFE837C91E516E5BA7E708736AA976E06657FE34A7A265",
+    "raw_log": "[{\"msg_index\":0,\"log\":\"\",\"events\":[{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"report\"}]},{\"type\":\"report\",\"attributes\":[{\"key\":\"id\",\"value\":\"47975\"},{\"key\":\"validator\",\"value\":\"bandvaloper1ywd2m858gu4eya3nzx6f9vme3sn82dr4thjnme\"}]}]}]",
+    "logs": [
+        {
+            "msg_index": 0,
+            "log": "",
+            "events": [
+                {
+                    "type": "message",
+                    "attributes": [
+                        {
+                            "key": "action",
+                            "value": "report"
+                        }
+                    ]
+                },
+                {
+                    "type": "report",
+                    "attributes": [
+                        {
+                            "key": "id",
+                            "value": "47975"
+                        },
+                        {
+                            "key": "validator",
+                            "value": "bandvaloper1ywd2m858gu4eya3nzx6f9vme3sn82dr4thjnme"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "gas_wanted": "200000",
+    "gas_used": "49519",
+    "tx": {
+        "type": "cosmos-sdk/StdTx",
+        "value": {
+            "msg": [
+                {
+                    "type": "oracle/Report",
+                    "value": {
+                        "request_id": "47975",
+                        "raw_reports": [
+                            {
+                                "external_id": "16",
+                                "exit_code": 1,
+                                "data": "Yml0ZmluZXggeyAiZXJyb3IiOiAiRVJSX1JBVEVfTElNSVQifQo="
+                            },
+                            {
+                                "external_id": "11",
+                                "data": "MS4wMDgK"
+                            },
+                            {
+                                "external_id": "31",
+                                "data": "MS4wMDA0Cg=="
+                            },
+                            {
+                                "external_id": "15",
+                                "data": "MS4wMDk1Ngo="
+                            },
+                            {
+                                "external_id": "12",
+                                "data": "MS4wMQo="
+                            },
+                            {
+                                "external_id": "13",
+                                "data": "MS4wMTg5Cg=="
+                            },
+                            {
+                                "external_id": "14",
+                                "data": "MS4wMDg0NDgK"
+                            }
+                        ],
+                        "validator": "bandvaloper1ywd2m858gu4eya3nzx6f9vme3sn82dr4thjnme",
+                        "reporter": "band19reqx2vgywgga9lksww4xhtmpym6vcj9jrj9mv"
+                    }
+                }
+            ],
+            "fee": {
+                "amount": [],
+                "gas": "200000"
+            },
+            "signatures": [
+                {
+                    "pub_key": {
+                        "type": "tendermint/PubKeySecp256k1",
+                        "value": "A21vDINCQH5m5UpBsbNK8lNUXX1LGOQpaKsE5UkB8j4M"
+                    },
+                    "signature": "pIIRruseyX6nmxJGX8ib4X6JRLXrBrIxTZPkRarbXOozjmoWb70H3RNoAhu7g0AQaP+9VMlcYXZ+sjbh3TzHHA=="
+                }
+            ],
+            "memo": ""
+        }
+    },
+    "timestamp": "2020-08-24T09:30:48Z"
+}

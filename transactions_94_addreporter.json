@@ -1,0 +1,215 @@
+{
+    "total_count": "1",
+    "count": "1",
+    "page_number": "1",
+    "page_total": "1",
+    "limit": "30",
+    "txs": [
+        {
+            "height": "94",
+            "txhash": "F48050AD34FB8FDB028DBCC0B8D740F4D9558DB415C3F02EEDB73B158CD3EB29",
+            "raw_log": "[{\"msg_index\":0,\"log\":\"\",\"events\":[{\"type\":\"add_reporter\",\"attributes\":[{\"key\":\"validator\",\"value\":\"bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl\"},{\"key\":\"reporter\",\"value\":\"band1npwvc8uyrssj4kj753w6yaqy46fnj7f3pz2zyr\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"add_reporter\"}]}]},{\"msg_index\":1,\"log\":\"\",\"events\":[{\"type\":\"add_reporter\",\"attributes\":[{\"key\":\"validator\",\"value\":\"bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl\"},{\"key\":\"reporter\",\"value\":\"band1q88xjqvnlpa77rnylz98z50658aq0h965wuthp\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"add_reporter\"}]}]},{\"msg_index\":2,\"log\":\"\",\"events\":[{\"type\":\"add_reporter\",\"attributes\":[{\"key\":\"validator\",\"value\":\"bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl\"},{\"key\":\"reporter\",\"value\":\"band1ksy88g3kxadw8kpk3ur5tj2922mv28a8wdh95z\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"add_reporter\"}]}]},{\"msg_index\":3,\"log\":\"\",\"events\":[{\"type\":\"add_reporter\",\"attributes\":[{\"key\":\"validator\",\"value\":\"bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl\"},{\"key\":\"reporter\",\"value\":\"band1usl5ee4k6adnxe8qh6w9tsxes59mhn0pjs6nsv\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"add_reporter\"}]}]},{\"msg_index\":4,\"log\":\"\",\"events\":[{\"type\":\"add_reporter\",\"attributes\":[{\"key\":\"validator\",\"value\":\"bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl\"},{\"key\":\"reporter\",\"value\":\"band1psx8899006nx4sk4pwd4qv5d4jf60qjh65wkw7\"}]},{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"add_reporter\"}]}]}]",
+            "logs": [
+                {
+                    "msg_index": 0,
+                    "log": "",
+                    "events": [
+                        {
+                            "type": "add_reporter",
+                            "attributes": [
+                                {
+                                    "key": "validator",
+                                    "value": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl"
+                                },
+                                {
+                                    "key": "reporter",
+                                    "value": "band1npwvc8uyrssj4kj753w6yaqy46fnj7f3pz2zyr"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "message",
+                            "attributes": [
+                                {
+                                    "key": "action",
+                                    "value": "add_reporter"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "msg_index": 1,
+                    "log": "",
+                    "events": [
+                        {
+                            "type": "add_reporter",
+                            "attributes": [
+                                {
+                                    "key": "validator",
+                                    "value": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl"
+                                },
+                                {
+                                    "key": "reporter",
+                                    "value": "band1q88xjqvnlpa77rnylz98z50658aq0h965wuthp"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "message",
+                            "attributes": [
+                                {
+                                    "key": "action",
+                                    "value": "add_reporter"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "msg_index": 2,
+                    "log": "",
+                    "events": [
+                        {
+                            "type": "add_reporter",
+                            "attributes": [
+                                {
+                                    "key": "validator",
+                                    "value": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl"
+                                },
+                                {
+                                    "key": "reporter",
+                                    "value": "band1ksy88g3kxadw8kpk3ur5tj2922mv28a8wdh95z"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "message",
+                            "attributes": [
+                                {
+                                    "key": "action",
+                                    "value": "add_reporter"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "msg_index": 3,
+                    "log": "",
+                    "events": [
+                        {
+                            "type": "add_reporter",
+                            "attributes": [
+                                {
+                                    "key": "validator",
+                                    "value": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl"
+                                },
+                                {
+                                    "key": "reporter",
+                                    "value": "band1usl5ee4k6adnxe8qh6w9tsxes59mhn0pjs6nsv"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "message",
+                            "attributes": [
+                                {
+                                    "key": "action",
+                                    "value": "add_reporter"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "msg_index": 4,
+                    "log": "",
+                    "events": [
+                        {
+                            "type": "add_reporter",
+                            "attributes": [
+                                {
+                                    "key": "validator",
+                                    "value": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl"
+                                },
+                                {
+                                    "key": "reporter",
+                                    "value": "band1psx8899006nx4sk4pwd4qv5d4jf60qjh65wkw7"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "message",
+                            "attributes": [
+                                {
+                                    "key": "action",
+                                    "value": "add_reporter"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "gas_wanted": "200000",
+            "gas_used": "49224",
+            "tx": {
+                "type": "cosmos-sdk/StdTx",
+                "value": {
+                    "msg": [
+                        {
+                            "type": "oracle/AddReporter",
+                            "value": {
+                                "validator": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                                "reporter": "band1npwvc8uyrssj4kj753w6yaqy46fnj7f3pz2zyr"
+                            }
+                        },
+                        {
+                            "type": "oracle/AddReporter",
+                            "value": {
+                                "validator": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                                "reporter": "band1q88xjqvnlpa77rnylz98z50658aq0h965wuthp"
+                            }
+                        },
+                        {
+                            "type": "oracle/AddReporter",
+                            "value": {
+                                "validator": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                                "reporter": "band1ksy88g3kxadw8kpk3ur5tj2922mv28a8wdh95z"
+                            }
+                        },
+                        {
+                            "type": "oracle/AddReporter",
+                            "value": {
+                                "validator": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                                "reporter": "band1usl5ee4k6adnxe8qh6w9tsxes59mhn0pjs6nsv"
+                            }
+                        },
+                        {
+                            "type": "oracle/AddReporter",
+                            "value": {
+                                "validator": "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                                "reporter": "band1psx8899006nx4sk4pwd4qv5d4jf60qjh65wkw7"
+                            }
+                        }
+                    ],
+                    "fee": {
+                        "amount": [],
+                        "gas": "200000"
+                    },
+                    "signatures": [
+                        {
+                            "pub_key": {
+                                "type": "tendermint/PubKeySecp256k1",
+                                "value": "A9SJwmcq339PFoIsWe//79zqvUd5dBydMt1uQT2qlI91"
+                            },
+                            "signature": "2er76sKJSiekIt9VZKCwbf0dJR1epjUCrOduuvvEZH8d67RxXeBiC88KHsQrCjG0Cv1lN/IHNvOhjKkHHBHI7g=="
+                        }
+                    ],
+                    "memo": ""
+                }
+            },
+            "timestamp": "2020-08-04T09:16:27Z"
+        }
+    ]
+}
