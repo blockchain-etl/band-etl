@@ -59,7 +59,37 @@ timestamp: TIMESTAMP
 msg_index: INTEGER
 type: STRING
 
-cosmos_sdk_msgmultisend: STRUCT
+oracle_Request: STRUCT
+├── oracle_script_id: STRING
+├── calldata: BYTES
+├── ask_count: STRING
+├── min_count: STRING
+├── client_id: STRING
+├── sender: STRING
+
+oracle_Report
+
+oracle_CreateDataSource
+
+oracle_EditDataSource
+
+oracle_CreateOracleScript
+
+oracle_EditOracleScript
+
+oracle_Activate
+
+oracle_AddReporter
+
+oracle_RemoveReporter
+
+oracle_OracleRequestPacketData
+
+oracle_OracleResponsePacketData
+
+cosmos_sdk_MsgSend
+
+cosmos_sdk_MsgMultiSend: STRUCT
 ├── inputs: STRUCT (REPEATED)
     ├── address: STRING
     ├── coins: STRUCT (REPEATED)
@@ -71,14 +101,37 @@ cosmos_sdk_msgmultisend: STRUCT
         ├── denom: STRING
         ├── amount: STRING
 
-oracle_request: STRUCT
-├── oracle_script_id: STRING
-├── calldata: BYTES
-├── ask_count: STRING
-├── min_count: STRING
-├── client_id: STRING
-├── sender: STRING
-  
-TODO
+cosmos_sdk_MsgVerifyInvariant
+
+cosmos_sdk_MsgWithdrawDelegationReward
+
+cosmos_sdk_MsgWithdrawValidatorCommission
+
+cosmos_sdk_MsgModifyWithdrawAddress
+
+cosmos_sdk_MsgFundCommunityPool
+
+cosmos_sdk_MsgSubmitEvidence
+
+cosmos_sdk_MsgSubmitProposal
+
+cosmos_sdk_MsgDeposit
+
+cosmos_sdk_MsgVote
+
+cosmos_sdk_MsgUnjail
+
+cosmos_sdk_MsgCreateValidator
+
+cosmos_sdk_MsgEditValidator
+
+cosmos_sdk_MsgDelegate
+
+cosmos_sdk_MsgUndelegate
+
+cosmos_sdk_MsgBeginRedelegate
+
 ```
 
+TODO: Add schema for messages from x/oracle/types/types.proto for Band types, x/bank/types/tx.pb.go etc. for  
+Cosmos SDK types.
