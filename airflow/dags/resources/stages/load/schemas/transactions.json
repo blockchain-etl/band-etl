@@ -1,0 +1,20 @@
+[
+    {
+        "name": "height",
+        "type": "INTEGER",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "txhash",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "message_type",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    }
+]
