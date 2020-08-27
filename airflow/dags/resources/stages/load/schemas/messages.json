@@ -16,5 +16,49 @@
         "type": "STRING",
         "description": "",
         "mode": "REQUIRED"
+    },
+    {
+        "name": "raw_json",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "oracle_CreateOracleScript",
+        "type": "RECORD",
+        "description": "",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "description",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "code",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "schema",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "sender",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
     }
 ]
