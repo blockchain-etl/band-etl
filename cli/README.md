@@ -34,3 +34,4 @@ Does Band define any custom transaction types.
 
 - For some reason timestamp in transactions is different from time in block
 - time in blocks has nanosecond resolution. BigQuery support microsecond resolution
+- Calculate balances using logs, message, transfer events. ex. transactions_53_multisend.json

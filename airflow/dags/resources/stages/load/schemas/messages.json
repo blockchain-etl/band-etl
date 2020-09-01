@@ -60,5 +60,40 @@
                 "mode": "NULLABLE"
             }
         ]
+    },
+    {
+        "name": "oracle_Report",
+        "type": "RECORD",
+        "description": "",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "request_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "raw_reports",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "external_id",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "data",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "exit_code",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
     }
 ]

@@ -24,8 +24,7 @@ from blockchainetl_common.executors.batch_work_executor import BatchWorkExecutor
 from blockchainetl_common.jobs.base_job import BaseJob
 from blockchainetl_common.utils import validate_range
 
-from bandetl.utils.string_utils import json_dumps, to_int
-from bandetl.service.band_service import BandService
+from bandetl.utils.string_utils import json_dumps, to_int, base64_string_to_bytes
 
 
 class ExportTransactionsJob(BaseJob):
@@ -33,7 +32,7 @@ class ExportTransactionsJob(BaseJob):
             self,
             start_block,
             end_block,
-            band_rpc,
+            band_service,
             max_workers,
             item_exporter,
             batch_size=1):
@@ -44,7 +43,7 @@ class ExportTransactionsJob(BaseJob):
         self.batch_work_executor = BatchWorkExecutor(batch_size, max_workers)
         self.item_exporter = item_exporter
 
-        self.band_service = BandService(band_rpc)
+        self.band_service = band_service
 
     def _start(self):
         self.item_exporter.open()
@@ -63,10 +62,12 @@ class ExportTransactionsJob(BaseJob):
     def _export_transactions(self, block_number):
         transactions = self.band_service.get_transactions(block_number)
         block = self.band_service.get_block(block_number)
+        block_results = self.band_service.get_block_results(block_number)
         block_timestamp = block.get('block').get('header').get('time')
 
+        items = []
         for tx in transactions.get('txs', []):
-            self.item_exporter.export_item({**tx, **{
+            items.append({**tx, **{
                 'type': 'transaction',
                 'timestamp': block_timestamp,
                 'raw_json': json_dumps(tx),
@@ -76,7 +77,7 @@ class ExportTransactionsJob(BaseJob):
                 message_type = msg.get('type')
                 normalized_message_type = normalize_message_type(message_type)
 
-                self.item_exporter.export_item({**msg, **{
+                items.append({**msg, **{
                     'type': 'message',
                     'block_timestamp': block_timestamp,
                     'height': to_int(tx.get('height')),
@@ -87,6 +88,39 @@ class ExportTransactionsJob(BaseJob):
                     'raw_json': json_dumps(msg),
                 }})
 
+        block_events = list(yield_block_events(block_results))
+        for event_type, event in block_events:
+            items.append({**event, **{
+                'type': 'block_event',
+                'event_type': event.get('type'),
+                'block_event_type': event_type,
+
+                'block_timestamp': block_timestamp,
+                'height': block_number,
+                'raw_json': json_dumps(event),
+            }})
+
+        for event_type, event in block_events:
+            if event_type == 'end' and event.get('type') == 'resolve':
+                resolve_event = parse_resolve_event(event)
+                if resolve_event.get('request_id') is not None:
+                    oracle_request = self.band_service.get_oracle_request(resolve_event.get('request_id'))
+                    oracle_request_result = oracle_request.get('result', {})
+                    oracle_script = self.band_service.get_oracle_script(
+                        oracle_request_result.get('request').get('oracle_script_id'))
+
+                    mapped_oracle_request = map_oracle_request(oracle_request, oracle_script)
+                    items.append({**mapped_oracle_request, **{
+                        'type': 'oracle_request',
+
+                        'block_timestamp': block_timestamp,
+                        'height': block_number,
+                        'raw_json': json_dumps(oracle_request),
+                    }})
+
+        for item in items:
+            self.item_exporter.export_item(item)
+
     def _end(self):
         self.batch_work_executor.shutdown()
         self.item_exporter.close()
@@ -94,3 +128,27 @@ class ExportTransactionsJob(BaseJob):
 
 def normalize_message_type(message_type):
     return message_type.replace('-', '_').replace('/', '_')
+
+
+def yield_block_events(block_results):
+    result = block_results.get('result', {})
+    for event in result.get('begin_block_events', []):
+        yield 'begin', event
+    for event in result.get('end_block_events', []):
+        yield 'end', event
+
+
+def parse_resolve_event(event):
+    attributes = event.get('attributes')
+    resolve = {}
+    if len(attributes) > 0:
+        request_id_as_bytes = attributes[0].get('value')
+        request_id = int(base64_string_to_bytes(request_id_as_bytes))
+        resolve['request_id'] = request_id
+    return resolve
+
+
+def map_oracle_request(oracle_request_result, oracle_script):
+    return {**oracle_request_result.get('result'), **{
+        'oracle_script': oracle_script.get('result')
+    }}

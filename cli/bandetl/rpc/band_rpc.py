@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 #
-# Copyright (c) 2020 Evgeny Medvedev, evge.medvedev@gmail.com, Vasiliy Bondarenko vabondarenko@gmail.com
+# Copyright (c) 2020 Evgeny Medvedev, evge.medvedev@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -51,3 +51,9 @@ class BandRpc:
 
     def get_block(self, block_id):
         return self.get('/blocks/{}'.format(block_id))
+
+    def get_oracle_request(self, request_id):
+        return self.get('/oracle/requests/{}'.format(request_id))
+
+    def get_oracle_script(self, oracle_script_id):
+        return self.get('/oracle/oracle_scripts/{}'.format(oracle_script_id))

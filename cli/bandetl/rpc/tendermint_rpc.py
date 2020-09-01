@@ -1,4 +1,4 @@
-# MIT License
+# The MIT License (MIT)
 #
 # Copyright (c) 2020 Evgeny Medvedev, evge.medvedev@gmail.com
 #
@@ -20,35 +20,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import decimal
+import json
 
-class BandService(object):
-    def __init__(self, band_rpc, tendermint_rpc):
-        self.band_rpc = band_rpc
-        self.tendermint_rpc = tendermint_rpc
+from bandetl.rpc.request import make_get_request
 
-    def get_block(self, block_id):
-        return self.band_rpc.get_block(block_id)
+
+class TendermintRpc:
+
+    def __init__(self, provider_uri, timeout=60):
+        self.provider_uri = provider_uri
+        self.timeout = timeout
+
+    def get(self, endpoint):
+        raw_response = make_get_request(
+            self.provider_uri,
+            endpoint,
+            timeout=self.timeout
+        )
+
+        response = self._decode_rpc_response(raw_response)
+        return response
+
+    def _decode_rpc_response(self, response):
+        response_text = response.decode('utf-8')
+        return json.loads(response_text, parse_float=decimal.Decimal)
 
     def get_block_results(self, block_id):
-        return self.tendermint_rpc.get_block_results(block_id)
-
-    def get_genesis_block(self):
-        return self.get_block(1)
-
-    def get_latest_block(self):
-        return self.get_block('latest')
-
-    def get_blocks(self, block_number_batch):
-        if not block_number_batch:
-            return []
-
-        return [self.get_block(x) for x in block_number_batch]
-
-    def get_transactions(self, block_number):
-        return self.band_rpc.get_transactions(block_number)
-
-    def get_oracle_request(self, request_id):
-        return self.band_rpc.get_oracle_request(request_id)
-
-    def get_oracle_script(self, oracle_script_id):
-        return self.band_rpc.get_oracle_script(oracle_script_id)
+        return self.get('/block_results?height={}'.format(block_id))

@@ -28,6 +28,9 @@ from bandetl.rpc.band_rpc import BandRpc
 from blockchainetl_common.logging_utils import logging_basic_config
 from blockchainetl_common.thread_local_proxy import ThreadLocalProxy
 
+from bandetl.rpc.tendermint_rpc import TendermintRpc
+from bandetl.service.band_service import BandService
+
 logging_basic_config()
 
 
@@ -36,17 +39,22 @@ logging_basic_config()
 @click.option('-e', '--end-block', required=True, type=int, help='End block')
 @click.option('-p', '--provider-uri', default='https://poa-api.bandchain.org', show_default=True, type=str,
               help='The URI of the remote Band node.')
+@click.option('-p', '--provider-uri-tendermint', default='http://poa-q1.d3n.xyz:26657', show_default=True, type=str,
+              help='The URI of the Tendermint RPC.')
 @click.option('-w', '--max-workers', default=5, show_default=True, type=int, help='The maximum number of workers.')
 @click.option('-o', '--output-dir', default=None, type=str, help='The output directory for block data.')
 @click.option('-f', '--output-format', default='json', show_default=True, type=click.Choice(['json']),
               help='The output format.')
-def export_transactions(start_block, end_block, provider_uri, max_workers, output_dir, output_format):
+def export_transactions(start_block, end_block, provider_uri, provider_uri_tendermint, max_workers, output_dir, output_format):
     """Exports ds blocks."""
+
+    band_rpc = ThreadLocalProxy(lambda: BandRpc(provider_uri))
+    tendermint_rpc = ThreadLocalProxy(lambda: TendermintRpc(provider_uri_tendermint))
 
     job = ExportTransactionsJob(
         start_block=start_block,
         end_block=end_block,
-        band_rpc=ThreadLocalProxy(lambda: BandRpc(provider_uri)),
+        band_service=BandService(band_rpc, tendermint_rpc),
         max_workers=max_workers,
         item_exporter=BandItemExporter(output_dir, output_format=output_format)
     )
