@@ -1,0 +1,228 @@
+[
+    {
+        "name": "block_height",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "block_timestamp",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "block_timestamp_truncated",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "request",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "oracle_script_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "calldata",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "requested_validators",
+                "type": "STRING",
+                "mode": "REPEATED"
+            },
+            {
+                "name": "min_count",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "request_height",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "request_time",
+                "type": "TIMESTAMP",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "raw_requests",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "external_id",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "data_source_id",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "calldata",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "reports",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "raw_reports",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "exit_code",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "data",
+                        "type": "BYTES",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "external_id",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "in_before_resolve",
+                "type": "BOOLEAN",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "result",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "request_packet_data",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "oracle_script_id",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "calldata",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "ask_count",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "min_count",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "response_packet_data",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "request_id",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "ans_count",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "request_time",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "resolve_time",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "resolve_status",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "result",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "oracle_script",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "description",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "filename",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "schema",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "source_code_url",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "raw_json",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    }
+]

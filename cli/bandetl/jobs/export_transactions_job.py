@@ -24,6 +24,7 @@ from blockchainetl_common.executors.batch_work_executor import BatchWorkExecutor
 from blockchainetl_common.jobs.base_job import BaseJob
 from blockchainetl_common.utils import validate_range
 
+from bandetl.utils.datetime_utils import truncate_timestamp_to_microseconds
 from bandetl.utils.string_utils import json_dumps, to_int, base64_string_to_bytes
 
 
@@ -65,40 +66,48 @@ class ExportTransactionsJob(BaseJob):
         block_results = self.band_service.get_block_results(block_number)
         block_timestamp = block.get('block').get('header').get('time')
 
+        block_timestamp_truncated = truncate_timestamp_to_microseconds(block_timestamp)
+
+        # TODO: Refactor
         items = []
         for tx in transactions.get('txs', []):
-            items.append({**tx, **{
+            items.append({
                 'type': 'transaction',
-                'timestamp': block_timestamp,
+                'block_height': block_number,
+                'block_timestamp': block_timestamp,
+                'block_timestamp_truncated': block_timestamp_truncated,
+                'gas_wanted': tx.get('gas_wanted'),
+                'gas_used': tx.get('gas_used'),
                 'raw_json': json_dumps(tx),
-            }})
+            })
 
             for msg in tx.get('tx', {}).get('value', {}).get('msg', []):
                 message_type = msg.get('type')
                 normalized_message_type = normalize_message_type(message_type)
 
-                items.append({**msg, **{
+                items.append({
                     'type': 'message',
+                    'block_height': block_number,
                     'block_timestamp': block_timestamp,
-                    'height': to_int(tx.get('height')),
+                    'block_timestamp_truncated': block_timestamp_truncated,
                     'txhash': tx.get('txhash'),
                     'message_type': message_type,
                     'normalized_message_type': normalized_message_type,
                     normalized_message_type: msg.get('value'),
                     'raw_json': json_dumps(msg),
-                }})
+                })
 
         block_events = list(yield_block_events(block_results))
         for event_type, event in block_events:
-            items.append({**event, **{
+            items.append({
                 'type': 'block_event',
+                'block_height': block_number,
+                'block_timestamp': block_timestamp,
+                'block_timestamp_truncated': block_timestamp_truncated,
                 'event_type': event.get('type'),
                 'block_event_type': event_type,
-
-                'block_timestamp': block_timestamp,
-                'height': block_number,
                 'raw_json': json_dumps(event),
-            }})
+            })
 
         for event_type, event in block_events:
             if event_type == 'end' and event.get('type') == 'resolve':
@@ -112,9 +121,9 @@ class ExportTransactionsJob(BaseJob):
                     mapped_oracle_request = map_oracle_request(oracle_request, oracle_script)
                     items.append({**mapped_oracle_request, **{
                         'type': 'oracle_request',
-
+                        'block_height': block_number,
                         'block_timestamp': block_timestamp,
-                        'height': block_number,
+                        'block_timestamp_truncated': block_timestamp_truncated,
                         'raw_json': json_dumps(oracle_request),
                     }})
 

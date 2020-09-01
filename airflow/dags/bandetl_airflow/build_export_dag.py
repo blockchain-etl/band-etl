@@ -117,6 +117,16 @@ def build_export_dag(
                 upload_empty_if_not_exist=True
             )
 
+            copy_to_export_path(
+                os.path.join(tempdir, "block_events.json"), export_path("block_events", execution_date),
+                upload_empty_if_not_exist=True
+            )
+
+            copy_to_export_path(
+                os.path.join(tempdir, "oracle_requests.json"), export_path("oracle_requests", execution_date),
+                upload_empty_if_not_exist=True
+            )
+
     def add_export_task(toggle, task_id, python_callable, dependencies=None):
         if toggle:
             operator = python_operator.PythonOperator(

@@ -1,0 +1,52 @@
+[
+    {
+        "name": "block_height",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "block_timestamp",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "block_timestamp_truncated",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "event_type",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "block_event_type",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "attributes",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "key",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "value",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "raw_json",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    }
+]

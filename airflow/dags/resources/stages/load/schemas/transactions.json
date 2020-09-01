@@ -1,18 +1,24 @@
 [
     {
-        "name": "height",
+        "name": "block_height",
         "type": "INTEGER",
         "description": "",
         "mode": "REQUIRED"
     },
     {
-        "name": "txhash",
+        "name": "block_timestamp",
         "type": "STRING",
         "description": "",
         "mode": "REQUIRED"
     },
     {
-        "name": "message_type",
+        "name": "block_timestamp_truncated",
+        "type": "TIMESTAMP",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "txhash",
         "type": "STRING",
         "description": "",
         "mode": "REQUIRED"

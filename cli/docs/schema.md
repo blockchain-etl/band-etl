@@ -133,5 +133,66 @@ cosmos_sdk_MsgBeginRedelegate
 
 ```
 
+## oracle_requests
+
+```
+|- block_height: integer                     
+|- block_timestamp: string
+|- block_timestamp_truncated: timestamp
++- request: record
+|  |- oracle_script_id: integer
+|  |- calldata: string
+|  |- requested_validators: string (repeated)
+|  |- min_count: integer
+|  |- request_height: integer
+|  |- request_time: timestamp
+|  +- raw_requests: record (repeated)
+|  |  |- external_id: integer
+|  |  |- data_source_id: integer
+|  |  |- calldata: string
++- reports: record (repeated)
+|  +- raw_reports: record (repeated)
+|  |  |- exit_code: integer
+|  |  |- data: bytes
+|  |  |- external_id: integer
+|  |- in_before_resolve: boolean
+|  |- validator: string
++- result: record
+|  +- request_packet_data: record
+|  |  |- oracle_script_id: integer
+|  |  |- calldata: string
+|  |  |- ask_count: integer
+|  |  |- min_count: integer
+|  +- response_packet_data: record
+|  |  |- request_id: integer
+|  |  |- ans_count: integer
+|  |  |- request_time: integer
+|  |  |- resolve_time: integer
+|  |  |- resolve_status: integer
+|  |  |- result: string
++- oracle_script: record
+|  |- owner: string
+|  |- name: string
+|  |- description: string
+|  |- filename: string
+|  |- schema: string
+|  |- source_code_url: string
+|- raw_json: string
+```
+
+## block_events
+
+```
+ |- block_height: integer               
+ |- block_timestamp: string
+ |- block_timestamp_truncated: timestamp
+ |- event_type: string (required)
+ |- block_event_type: string (required)
+ +- attributes: record (repeated)
+ |  |- key: string
+ |  |- value: string
+ |- raw_json: string (required)
+```
+
 TODO: Add schema for messages from x/oracle/types/types.proto for Band types, x/bank/types/tx.pb.go etc. for  
 Cosmos SDK types.
