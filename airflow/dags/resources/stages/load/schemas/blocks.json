@@ -1,0 +1,42 @@
+[
+    {
+        "name": "block_height",
+        "type": "INTEGER",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "block_timestamp",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "block_timestamp_truncated",
+        "type": "TIMESTAMP",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "txhash",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "type",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "gas_wanted",
+        "type": "NUMERIC",
+        "description": ""
+    },
+    {
+        "name": "gas_used",
+        "type": "NUMERIC",
+        "description": ""
+    }
+]

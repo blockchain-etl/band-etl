@@ -1,0 +1,71 @@
+[
+    {
+        "name": "block_height",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "block_timestamp",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "block_timestamp_truncated",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "txhash",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "log_index",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "msg_index",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "log",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "events",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "type",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "attributes",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "key",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "value",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "raw_json",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    }
+]

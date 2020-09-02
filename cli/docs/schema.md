@@ -42,7 +42,7 @@
 |- txhash: string
 |- log_index: integer
 |- msg_index: integer
-|- log: STRING
+|- log: string
 +- events: record (repeated)
 |  |- type: string
 |  +- attributes: (repeated)

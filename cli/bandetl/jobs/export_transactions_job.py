@@ -69,7 +69,27 @@ class ExportTransactionsJob(BaseJob):
         block_timestamp_truncated = truncate_timestamp_to_microseconds(block_timestamp)
 
         # TODO: Refactor
+
         items = []
+
+        items.append({
+            'type': 'block',
+            'block_hash': block['block_id']['hash'],
+            'block_height': block_number,
+            'block_timestamp': block_timestamp,
+            'block_timestamp_truncated': block_timestamp_truncated,
+            'proposer_address': block['block']['header']['proposer_address'],
+            'last_commit_hash': block['block']['header']['last_commit_hash'],
+            'data_hash': block['block']['header']['data_hash'],
+            'validators_hash': block['block']['header']['validators_hash'],
+            'next_validators_hash': block['block']['header']['next_validators_hash'],
+            'consensus_hash': block['block']['header']['consensus_hash'],
+            'app_hash': block['block']['header']['app_hash'],
+            'last_results_hash': block['block']['header']['last_results_hash'],
+            'evidence_hash': block['block']['header']['evidence_hash'],
+            'signatures': block['block']['last_commit']['signatures'],
+        })
+
         for tx in transactions.get('txs', []):
             items.append({
                 'type': 'transaction',
@@ -81,6 +101,20 @@ class ExportTransactionsJob(BaseJob):
                 'gas_used': tx.get('gas_used'),
                 'raw_json': json_dumps(tx),
             })
+
+            for log_index, log in enumerate(tx.get('logs', [])):
+                items.append({
+                    'type': 'log',
+                    'block_height': block_number,
+                    'block_timestamp': block_timestamp,
+                    'block_timestamp_truncated': block_timestamp_truncated,
+                    'txhash': tx.get('txhash'),
+                    'log_index': log_index,
+                    'msg_index': log.get('msg_index'),
+                    'log': log.get('log'),
+                    'events': log.get('events'),
+                    'raw_json': json_dumps(log),
+                })
 
             for msg in tx.get('tx', {}).get('value', {}).get('msg', []):
                 message_type = msg.get('type')
