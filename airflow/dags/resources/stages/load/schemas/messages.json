@@ -30,19 +30,46 @@
         "mode": "REQUIRED"
     },
     {
-        "name": "raw_json",
-        "type": "STRING",
-        "description": "",
-        "mode": "REQUIRED"
-    },
-    {
-        "name": "oracle_CreateOracleScript",
+        "name": "oracle_Activate",
         "type": "RECORD",
-        "description": "",
         "mode": "NULLABLE",
         "fields": [
             {
-                "name": "owner",
+                "name": "validator",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_AddReporter",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "reporter",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_CreateDataSource",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "executable",
+                "type": "BYTES",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "description",
                 "type": "STRING",
                 "mode": "NULLABLE"
             },
@@ -52,12 +79,24 @@
                 "mode": "NULLABLE"
             },
             {
-                "name": "description",
+                "name": "sender",
                 "type": "STRING",
                 "mode": "NULLABLE"
             },
             {
-                "name": "code",
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_CreateOracleScript",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "sender",
                 "type": "STRING",
                 "mode": "NULLABLE"
             },
@@ -67,8 +106,107 @@
                 "mode": "NULLABLE"
             },
             {
+                "name": "description",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "code",
+                "type": "BYTES",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_EditDataSource",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
                 "name": "sender",
                 "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "executable",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "description",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "data_source_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_EditOracleScript",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "sender",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "source_code_url",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "schema",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "description",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "code",
+                "type": "BYTES",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "owner",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "oracle_script_id",
+                "type": "INTEGER",
                 "mode": "NULLABLE"
             }
         ]
@@ -76,11 +214,15 @@
     {
         "name": "oracle_Report",
         "type": "RECORD",
-        "description": "",
         "mode": "NULLABLE",
         "fields": [
             {
-                "name": "request_id",
+                "name": "validator",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "reporter",
                 "type": "STRING",
                 "mode": "NULLABLE"
             },
@@ -90,8 +232,8 @@
                 "mode": "REPEATED",
                 "fields": [
                     {
-                        "name": "external_id",
-                        "type": "STRING",
+                        "name": "exit_code",
+                        "type": "INTEGER",
                         "mode": "NULLABLE"
                     },
                     {
@@ -100,12 +242,243 @@
                         "mode": "NULLABLE"
                     },
                     {
-                        "name": "exit_code",
+                        "name": "external_id",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "request_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_Request",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "sender",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "ask_count",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "calldata",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "min_count",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "oracle_script_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+
+    {
+        "name": "cosmos_sdk_MsgDelegate",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "validator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "delegator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgEditValidator",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "commission_rate",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "min_self_delegation",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "description",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "details",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "security_contact",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "website",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "identity",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "moniker",
                         "type": "STRING",
                         "mode": "NULLABLE"
                     }
                 ]
             }
         ]
+    },
+    {
+        "name": "cosmos_sdk_MsgMultiSend",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "outputs",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "coins",
+                        "type": "RECORD",
+                        "mode": "REPEATED",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "type": "INTEGER",
+                                "mode": "NULLABLE"
+                            },
+                            {
+                                "name": "denom",
+                                "type": "STRING",
+                                "mode": "NULLABLE"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "address",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "inputs",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "coins",
+                        "type": "RECORD",
+                        "mode": "REPEATED",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "type": "INTEGER",
+                                "mode": "NULLABLE"
+                            },
+                            {
+                                "name": "denom",
+                                "type": "STRING",
+                                "mode": "NULLABLE"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "address",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgSend",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "to_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "from_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "raw_json",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
     }
 ]

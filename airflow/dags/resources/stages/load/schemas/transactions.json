@@ -22,5 +22,15 @@
         "type": "STRING",
         "description": "",
         "mode": "REQUIRED"
+    },
+    {
+        "name": "gas_wanted",
+        "type": "NUMERIC",
+        "description": ""
+    },
+    {
+        "name": "gas_used",
+        "type": "NUMERIC",
+        "description": ""
     }
 ]

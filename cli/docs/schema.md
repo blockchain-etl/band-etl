@@ -52,85 +52,127 @@ events: STRUCT (REPEATED)
 ## messages
 
 ```
-messages (table name, not part of column names)
-height: INTEGER
-txhash: STRING
-timestamp: TIMESTAMP
-msg_index: INTEGER
-type: STRING
+|- block_height: integer (required)                  
+|- block_timestamp: string (required)
+|- block_timestamp_truncated: timestamp (required)
+|- txhash: string (required)
+|- message_type: string (required)
++- oracle_Activate: record
+|  |- validator: string
++- oracle_AddReporter: record
+|  |- reporter: string
+|  |- validator: string
++- oracle_CreateDataSource: record
+|  |- executable: bytes
+|  |- description: string
+|  |- name: string
+|  |- sender: string
+|  |- owner: string
++- oracle_CreateOracleScript: record
+|  |- sender: string
+|  |- schema: string
+|  |- description: string
+|  |- name: string
+|  |- code: bytes
+|  |- owner: string
++- oracle_EditDataSource: record
+|  |- sender: string
+|  |- executable: string
+|  |- description: string
+|  |- name: string
+|  |- owner: string
+|  |- data_source_id: integer
++- oracle_EditOracleScript: record
+|  |- sender: string
+|  |- source_code_url: string
+|  |- schema: string
+|  |- description: string
+|  |- name: string
+|  |- code: bytes
+|  |- owner: string
+|  |- oracle_script_id: integer
++- oracle_Report: record
+|  |- validator: string
+|  |- reporter: string
+|  +- raw_reports: record (repeated)
+|  |  |- exit_code: integer
+|  |  |- data: string
+|  |  |- external_id: integer
+|  |- request_id: integer
++- oracle_Request: record
+|  |- sender: string
+|  |- ask_count: integer
+|  |- calldata: string
+|  |- min_count: integer
+|  |- oracle_script_id: integer
++- cosmos_sdk_MsgDelegate: record
+|  +- amount: record
+|  |  |- amount: integer
+|  |  |- denom: string
+|  |- validator_address: string
+|  |- delegator_address: string
++- cosmos_sdk_MsgEditValidator: record
+|  |- commission_rate: string
+|  |- address: string
+|  |- min_self_delegation: string
+|  +- description: record
+|  |  |- details: string
+|  |  |- security_contact: string
+|  |  |- website: string
+|  |  |- identity: string
+|  |  |- moniker: string
++- cosmos_sdk_MsgMultiSend: record
+|  +- outputs: record (repeated)
+|  |  +- coins: record (repeated)
+|  |  |  |- amount: integer
+|  |  |  |- denom: string
+|  |  |- address: string
+|  +- inputs: record (repeated)
+|  |  +- coins: record (repeated)
+|  |  |  |- amount: integer
+|  |  |  |- denom: string
+|  |  |- address: string
++- cosmos_sdk_MsgSend: record
+|  |- to_address: string
+|  +- amount: record (repeated)
+|  |  |- amount: integer
+|  |  |- denom: string
+|  |- from_address: string
+```
 
-oracle_Request: STRUCT
-├── oracle_script_id: STRING
-├── calldata: BYTES
-├── ask_count: STRING
-├── min_count: STRING
-├── client_id: STRING
-├── sender: STRING
+All message types:
 
-oracle_Report
-
-oracle_CreateDataSource
-
-oracle_EditDataSource
-
-oracle_CreateOracleScript
-
-oracle_EditOracleScript
-
-oracle_Activate
-
+```
+oracle_Activate 
 oracle_AddReporter
+oracle_CreateDataSource
+oracle_CreateOracleScript
+oracle_EditDataSource
+oracle_EditOracleScript
+oracle_Report
+oracle_Request
+oracle_RemoveReporter -
+oracle_OracleRequestPacketData -
+oracle_OracleResponsePacketData -
 
-oracle_RemoveReporter
-
-oracle_OracleRequestPacketData
-
-oracle_OracleResponsePacketData
-
-cosmos_sdk_MsgSend
-
-cosmos_sdk_MsgMultiSend: STRUCT
-├── inputs: STRUCT (REPEATED)
-    ├── address: STRING
-    ├── coins: STRUCT (REPEATED)
-        ├── denom: STRING
-        ├── amount: STRING
-├── outputs: STRUCT (REPEATED)
-    ├── address: STRING
-    ├── coins: STRUCT (REPEATED)
-        ├── denom: STRING
-        ├── amount: STRING
-
-cosmos_sdk_MsgVerifyInvariant
-
-cosmos_sdk_MsgWithdrawDelegationReward
-
-cosmos_sdk_MsgWithdrawValidatorCommission
-
-cosmos_sdk_MsgModifyWithdrawAddress
-
-cosmos_sdk_MsgFundCommunityPool
-
-cosmos_sdk_MsgSubmitEvidence
-
-cosmos_sdk_MsgSubmitProposal
-
-cosmos_sdk_MsgDeposit
-
-cosmos_sdk_MsgVote
-
-cosmos_sdk_MsgUnjail
-
-cosmos_sdk_MsgCreateValidator
-
-cosmos_sdk_MsgEditValidator
-
-cosmos_sdk_MsgDelegate
-
-cosmos_sdk_MsgUndelegate
 
 cosmos_sdk_MsgBeginRedelegate
-
+cosmos_sdk_MsgCreateValidator
+cosmos_sdk_MsgDelegate +
+cosmos_sdk_MsgDeposit
+cosmos_sdk_MsgEditValidator +
+cosmos_sdk_MsgFundCommunityPool
+cosmos_sdk_MsgModifyWithdrawAddress
+cosmos_sdk_MsgMultiSend +
+cosmos_sdk_MsgSend +
+cosmos_sdk_MsgSubmitEvidence
+cosmos_sdk_MsgSubmitProposal
+cosmos_sdk_MsgUndelegate
+cosmos_sdk_MsgUnjail
+cosmos_sdk_MsgVerifyInvariant
+cosmos_sdk_MsgVote
+cosmos_sdk_MsgWithdrawDelegationReward
+cosmos_sdk_MsgWithdrawValidatorCommission
 ```
 
 ## oracle_requests
