@@ -87,17 +87,19 @@ def build_export_dag(
 
         return int(start_block), int(end_block)
 
-    def export_transactions_command(execution_date, provider_uri, **kwargs):
+    def export_transactions_command(execution_date, provider_uri_combined, **kwargs):
+        provider_uri_rest, provider_uri_tendermint = parse_provider_uri(provider_uri_combined)
         with TemporaryDirectory() as tempdir:
-            start_block, end_block = get_block_range(tempdir, execution_date, provider_uri)
+            start_block, end_block = get_block_range(tempdir, execution_date, provider_uri_rest)
 
-            logging.info('Calling export_transactions({}, {}, {}, {}, {})'.format(
-                start_block, end_block, provider_uri, export_max_workers, tempdir))
+            logging.info('Calling export_transactions({}, {}, {}, {}, {}, {})'.format(
+                start_block, end_block, provider_uri_rest, provider_uri_tendermint, export_max_workers, tempdir))
 
             export_transactions.callback(
                 start_block=start_block,
                 end_block=end_block,
-                provider_uri=provider_uri,
+                provider_uri=provider_uri_rest,
+                provider_uri_tendermint=provider_uri_tendermint,
                 max_workers=export_max_workers,
                 output_dir=tempdir,
                 output_format='json'
@@ -159,7 +161,7 @@ def add_provider_uri_fallback_loop(python_callable, provider_uris):
     """Tries each provider uri in provider_uris until the command succeeds"""
     def python_callable_with_fallback(**kwargs):
         for index, provider_uri in enumerate(provider_uris):
-            kwargs['provider_uri'] = provider_uri
+            kwargs['provider_uri_combined'] = provider_uri
             try:
                 python_callable(**kwargs)
                 break
@@ -170,3 +172,13 @@ def add_provider_uri_fallback_loop(python_callable, provider_uris):
                     raise e
 
     return python_callable_with_fallback
+
+
+def parse_provider_uri(provider_uri):
+    provider_uri_split = provider_uri.split(';')
+
+    if len(provider_uri_split) != 2:
+        raise ValueError(
+            'provider_uri must contain rest uri and tendermint uri separated by ; e.g. https://poa-api.bandchain.org;https://poa-api.bandchain.org:26657')
+
+    return provider_uri_split[0], provider_uri_split[1]

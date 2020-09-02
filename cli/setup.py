@@ -32,6 +32,7 @@ setup(
     install_requires=[
         'blockchain-etl-common==1.3.0',
         'requests==2.24.0',
+        'python-dateutil==2.8.1',
         'six==1.15.0',
         'click==7.0',
     ],

@@ -141,10 +141,15 @@ def normalize_message_type(message_type):
 
 def yield_block_events(block_results):
     result = block_results.get('result', {})
-    for event in result.get('begin_block_events', []):
-        yield 'begin', event
-    for event in result.get('end_block_events', []):
-        yield 'end', event
+    begin_block_events = result.get('begin_block_events')
+    if begin_block_events is not None:
+        for event in begin_block_events:
+            yield 'begin', event
+
+    end_block_events = result.get('end_block_events')
+    if end_block_events is not None:
+        for event in end_block_events:
+            yield 'end', event
 
 
 def parse_resolve_event(event):

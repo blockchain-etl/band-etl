@@ -22,7 +22,7 @@
 
 
 class BandService(object):
-    def __init__(self, band_rpc, tendermint_rpc):
+    def __init__(self, band_rpc, tendermint_rpc=None):
         self.band_rpc = band_rpc
         self.tendermint_rpc = tendermint_rpc
 
@@ -30,6 +30,8 @@ class BandService(object):
         return self.band_rpc.get_block(block_id)
 
     def get_block_results(self, block_id):
+        if self.tendermint_rpc is None:
+            raise ValueError('tendermint_rpc was omitted when creating BandService. Cannot call get_block_results')
         return self.tendermint_rpc.get_block_results(block_id)
 
     def get_genesis_block(self):
