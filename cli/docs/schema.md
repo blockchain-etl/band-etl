@@ -1,52 +1,53 @@
 ## blocks
 
 ```
-hash: STRING
-height: INTEGER
-timestamp: TIMESTAMP
-proposer_address: STRING
-last_commit_hash: STRING
-data_hash: STRING
-validators_hash: STRING
-next_validators_hash: STRING
-consensus_hash: STRING
-app_hash: STRING
-last_results_hash: STRING
-evidence_hash: STRING
-signatures: REPEATED
-├── block_id_flag: INTEGER
-├── validator_address: STRING
-├── timestamp: TIMESTAMP
-├── signature: BYTES
+|- block_hash: string
+|- block_height: integer (required)                  
+|- block_timestamp: string (required)
+|- block_timestamp_truncated: timestamp (required)
+|- proposer_address: string
+|- last_commit_hash: string
+|- data_hash: string
+|- validators_hash: string
+|- next_validators_hash: string
+|- consensus_hash: string
+|- app_hash: string
+|- last_results_hash: string
+|- evidence_hash: string
++- signatures: record (repeated)
+|  |- block_id_flag: integer
+|  |- validator_address: string
+|  |- timestamp: timestamp
+|  |- signature: bytes
 ```
 
 ## transactions
 
 ```
-transactions (table name, not part of column names)
-height: INTEGER
-txhash: STRING
-timestamp: TIMESTAMP
-type: STRING
-gas_wanted: NUMERIC
-gas_used: NUMERIC
+|- block_height: integer (required)                  
+|- block_timestamp: string (required)
+|- block_timestamp_truncated: timestamp (required)
+|- txhash: string
+|- type: string
+|- gas_wanted: numeric
+|- gas_used: numeric
 ```
 
 ## logs
 
 ```
-logs (table name, not part of column names)
-height: INTEGER
-txhash: STRING
-timestamp: TIMESTAMP
-log_index: INTEGER
-msg_index: INTEGER
-log: STRING
-events: STRUCT (REPEATED)
-├── type: STRING
-├── attributes: REPEATED
-    ├── key: STRING
-    ├── value: STRING
+|- block_height: integer (required)                  
+|- block_timestamp: string (required)
+|- block_timestamp_truncated: timestamp (required)
+|- txhash: string
+|- log_index: integer
+|- msg_index: integer
+|- log: STRING
++- events: record (repeated)
+|  |- type: string
+|  +- attributes: (repeated)
+|  |  |- key: string
+|  |  |- value: string
 ```
 
 ## messages

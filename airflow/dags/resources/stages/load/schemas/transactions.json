@@ -24,6 +24,12 @@
         "mode": "REQUIRED"
     },
     {
+        "name": "transaction_type",
+        "type": "STRING",
+        "description": "",
+        "mode": "REQUIRED"
+    },
+    {
         "name": "gas_wanted",
         "type": "NUMERIC",
         "description": ""
