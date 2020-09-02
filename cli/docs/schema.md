@@ -220,7 +220,6 @@ cosmos_sdk_MsgWithdrawValidatorCommission
 |  |- filename: string
 |  |- schema: string
 |  |- source_code_url: string
-|- raw_json: string
 ```
 
 ## block_events
@@ -234,7 +233,6 @@ cosmos_sdk_MsgWithdrawValidatorCommission
  +- attributes: record (repeated)
  |  |- key: string
  |  |- value: string
- |- raw_json: string (required)
 ```
 
 TODO: Add schema for messages from x/oracle/types/types.proto for Band types, x/bank/types/tx.pb.go etc. for  
