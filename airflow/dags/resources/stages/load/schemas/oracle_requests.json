@@ -184,6 +184,23 @@
         ]
     },
     {
+        "name": "decoded_result",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "calldata",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "result",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
         "name": "oracle_script",
         "type": "RECORD",
         "mode": "NULLABLE",

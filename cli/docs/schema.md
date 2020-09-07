@@ -213,6 +213,9 @@ cosmos_sdk_MsgWithdrawValidatorCommission
 |  |  |- resolve_time: integer
 |  |  |- resolve_status: integer
 |  |  |- result: string
++- decoded_result: record
+|  +- calldata: string
+|  +- result: string
 +- oracle_script: record
 |  |- owner: string
 |  |- name: string
