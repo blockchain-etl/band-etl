@@ -24,8 +24,10 @@ from blockchainetl_common.executors.batch_work_executor import BatchWorkExecutor
 from blockchainetl_common.jobs.base_job import BaseJob
 from blockchainetl_common.utils import validate_range
 
+from bandetl.utils.band_utils import decode_oracle_request_calldata, decode_oracle_response_result
 from bandetl.utils.datetime_utils import truncate_timestamp_to_microseconds
-from bandetl.utils.string_utils import json_dumps, to_int, base64_string_to_bytes
+from bandetl.utils.string_utils import json_dumps, base64_string_to_bytes
+from pyobi import PyObi
 
 
 class ExportTransactionsJob(BaseJob):
@@ -197,7 +199,21 @@ def parse_resolve_event(event):
     return resolve
 
 
-def map_oracle_request(oracle_request_result, oracle_script):
-    return {**oracle_request_result.get('result'), **{
-        'oracle_script': oracle_script.get('result')
+def map_oracle_request(oracle_request, oracle_script):
+    schema = oracle_script['result']['schema']
+
+    obi = PyObi(schema)
+
+    calldata = oracle_request['result']['result']['request_packet_data']['calldata']
+    response_result = oracle_request['result']['result']['response_packet_data']['result']
+
+    decoded_calldata = decode_oracle_request_calldata(obi, calldata)
+    decoded_response_result = decode_oracle_response_result(obi, response_result)
+
+    return {**oracle_request['result'], **{
+        'oracle_script': oracle_script['result'],
+        'decoded_result': {
+            'calldata': json_dumps(decoded_calldata),
+            'result': json_dumps(decoded_response_result),
+        }
     }}

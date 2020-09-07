@@ -31,6 +31,13 @@
 |- type: string
 |- gas_wanted: numeric
 |- gas_used: numeric
+|- sender: string
+|- fee: string
+|  +- amount: record
+|  |  |- amount: integer
+|  |  |- denom: string
+|  |- gas: integer
+|- memo: string
 ```
 
 ## logs
@@ -213,6 +220,9 @@ cosmos_sdk_MsgWithdrawValidatorCommission
 |  |  |- resolve_time: integer
 |  |  |- resolve_status: integer
 |  |  |- result: string
++- decoded_result: record
+|  +- calldata: string
+|  +- result: string
 +- oracle_script: record
 |  |- owner: string
 |  |- name: string
