@@ -31,6 +31,13 @@
 |- type: string
 |- gas_wanted: numeric
 |- gas_used: numeric
+|- sender: string
+|- fee: string
+|  +- amount: record
+|  |  |- amount: integer
+|  |  |- denom: string
+|  |- gas: integer
+|- memo: string
 ```
 
 ## logs
