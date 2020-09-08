@@ -15,23 +15,11 @@ curl -X GET https://poa-api.bandchain.org/txs?tx.height=568661
 
 ## Questions
 
-- Project name choice: Band ETL (band-etl) or Band Protocol ETL (band-protocol-etl)?  
 - Cosmos SDK uses "cosmos-sdk/StdTx" as a standard transaction type, but it allows to implement custom tx types.
 Does Band define any custom transaction types. 
-- Oracle reports have binary data, how to parse it:
-
-```
-"raw_reports": [
-    {
-        "external_id": "15",
-        "data": "MS4wMDk1Ngo="
-    },
-    {
-        "external_id": "14",
-        "data": "MS4wMDg0NDgK"
-    }
-```
-
 - For some reason timestamp in transactions is different from time in block
-- time in blocks has nanosecond resolution. BigQuery support microsecond resolution
+- time in blocks has nanosecond resolution. BigQuery support microsecond resolution. That's why we have `*_truncated`
+    timestamp columns.
 - Calculate balances using logs, message, transfer events. ex. transactions_53_multisend.json
+- Transactions don't have gas prices
+- How to convert pub_key to address. 
