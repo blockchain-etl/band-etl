@@ -149,8 +149,9 @@ class ExportTransactionsJob(BaseJob):
         for event_type, event in block_events:
             if event_type == 'end' and event.get('type') == 'resolve':
                 resolve_event = parse_resolve_event(event)
-                if resolve_event.get('request_id') is not None:
-                    oracle_request = self.band_service.get_oracle_request(resolve_event.get('request_id'))
+                oracle_request_id = resolve_event.get('request_id')
+                if oracle_request_id is not None:
+                    oracle_request = self.band_service.get_oracle_request(oracle_request_id)
                     oracle_request_result = oracle_request.get('result', {})
                     oracle_script = self.band_service.get_oracle_script(
                         oracle_request_result.get('request').get('oracle_script_id'))
@@ -158,6 +159,7 @@ class ExportTransactionsJob(BaseJob):
                     mapped_oracle_request = map_oracle_request(oracle_request, oracle_script)
                     items.append({**mapped_oracle_request, **{
                         'type': 'oracle_request',
+                        'oracle_request_id': oracle_request_id,
                         'block_height': block_number,
                         'block_timestamp': block_timestamp,
                         'block_timestamp_truncated': block_timestamp_truncated,

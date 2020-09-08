@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2020 Evgeny Medvedev evge.medvedev@gmail.com
+# Copyright (c) 2018 Evgeny Medvedev, evge.medvedev@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import click
-from bandetl.cli.export_transactions import export_transactions
-from bandetl.cli.stream import stream
-from bandetl.cli.get_block_range_for_date import get_block_range_for_date
+import json
+import logging
 
 
-@click.group()
-@click.version_option(version='0.0.1')
-@click.pass_context
-def cli(ctx):
-    pass
+class ItemIdCalculator:
+
+    def calculate(self, item):
+        if item is None or not isinstance(item, dict):
+            return None
+
+        item_type = item.get('type')
+
+        if item_type == 'oracle_request' and item.get('oracle_request_id') is not None:
+            return concat(item_type, item.get('oracle_request_id'))
+
+        logging.warning('item_id for item {} is None'.format(json.dumps(item)))
+
+        return None
 
 
-# export
-cli.add_command(export_transactions, "export_transactions")
-cli.add_command(stream, "stream")
-cli.add_command(get_block_range_for_date, "get_block_range_for_date")
-
+def concat(*elements):
+    return '_'.join([str(elem) for elem in elements])
