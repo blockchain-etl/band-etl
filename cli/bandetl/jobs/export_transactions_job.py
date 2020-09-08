@@ -204,8 +204,8 @@ def map_oracle_request(oracle_request, oracle_script):
 
     obi = PyObi(schema)
 
-    calldata = oracle_request['result']['result']['request_packet_data']['calldata']
-    response_result = oracle_request['result']['result']['response_packet_data']['result']
+    calldata = oracle_request['result']['result']['request_packet_data'].get('calldata')
+    response_result = oracle_request['result']['result']['response_packet_data'].get('result')
 
     decoded_calldata = decode_oracle_request_calldata(obi, calldata)
     decoded_response_result = decode_oracle_response_result(obi, response_result)
