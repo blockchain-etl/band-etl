@@ -67,7 +67,7 @@ def build_load_dag(
 
     dags_folder = os.environ.get('DAGS_FOLDER', '/home/airflow/gcs/dags')
 
-    def add_load_tasks(task, time_partitioning_field='timestamp'):
+    def add_load_tasks(task, time_partitioning_field='block_timestamp_truncated'):
         wait_sensor = GoogleCloudStorageObjectSensor(
             task_id='wait_latest_{task}'.format(task=task),
             timeout=60 * 60,

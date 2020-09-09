@@ -109,25 +109,13 @@ def build_export_dag(
                 os.path.join(tempdir, "blocks_meta.txt"), export_path("blocks_meta", execution_date)
             )
 
-            copy_to_export_path(
-                os.path.join(tempdir, "transactions.json"), export_path("transactions", execution_date),
-                upload_empty_if_not_exist=True
-            )
+            all_entities = ['blocks', 'transactions', 'logs', 'messages', 'block_events', 'oracle_requests']
 
-            copy_to_export_path(
-                os.path.join(tempdir, "messages.json"), export_path("messages", execution_date),
-                upload_empty_if_not_exist=True
-            )
-
-            copy_to_export_path(
-                os.path.join(tempdir, "block_events.json"), export_path("block_events", execution_date),
-                upload_empty_if_not_exist=True
-            )
-
-            copy_to_export_path(
-                os.path.join(tempdir, "oracle_requests.json"), export_path("oracle_requests", execution_date),
-                upload_empty_if_not_exist=True
-            )
+            for entity in all_entities:
+                copy_to_export_path(
+                    os.path.join(tempdir, f"{entity}.json"), export_path(entity, execution_date),
+                    upload_empty_if_not_exist=True
+                )
 
     def add_export_task(toggle, task_id, python_callable, dependencies=None):
         if toggle:
