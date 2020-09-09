@@ -20,14 +20,12 @@
     {
         "name": "txhash",
         "type": "STRING",
-        "description": "",
-        "mode": "REQUIRED"
+        "description": ""
     },
     {
         "name": "transaction_type",
         "type": "STRING",
-        "description": "",
-        "mode": "REQUIRED"
+        "description": ""
     },
     {
         "name": "gas_wanted",

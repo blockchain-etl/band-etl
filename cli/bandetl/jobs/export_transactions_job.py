@@ -95,7 +95,8 @@ class ExportTransactionsJob(BaseJob):
         for tx in transactions.get('txs', []):
             items.append({
                 'type': 'transaction',
-                'transaction_type': tx.get('type'),
+                'transaction_type': tx.get('tx', {}).get('type'),
+                'txhash': tx.get('txhash'),
                 'block_height': block_number,
                 'block_timestamp': block_timestamp,
                 'block_timestamp_truncated': block_timestamp_truncated,
