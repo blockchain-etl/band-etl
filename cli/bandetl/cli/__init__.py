@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 import click
-from bandetl.cli.export_transactions import export_transactions
+from bandetl.cli.export_blocks import export_blocks
 from bandetl.cli.stream import stream
 from bandetl.cli.get_block_range_for_date import get_block_range_for_date
 
@@ -34,7 +34,7 @@ def cli(ctx):
 
 
 # export
-cli.add_command(export_transactions, "export_transactions")
+cli.add_command(export_blocks, "export_blocks")
 cli.add_command(stream, "stream")
 cli.add_command(get_block_range_for_date, "get_block_range_for_date")
 
