@@ -18,25 +18,8 @@
         "mode": "REQUIRED"
     },
     {
-        "name": "txhash",
+        "name": "block_hash",
         "type": "STRING",
-        "description": "",
-        "mode": "REQUIRED"
-    },
-    {
-        "name": "type",
-        "type": "STRING",
-        "description": "",
-        "mode": "REQUIRED"
-    },
-    {
-        "name": "gas_wanted",
-        "type": "NUMERIC",
-        "description": ""
-    },
-    {
-        "name": "gas_used",
-        "type": "NUMERIC",
         "description": ""
     }
 ]
