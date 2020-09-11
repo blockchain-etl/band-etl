@@ -113,6 +113,23 @@
 |  |- calldata: string
 |  |- min_count: integer
 |  |- oracle_script_id: integer
++- oracle_RemoveReporter: record
+|  |- validator: string
+|  |- reporter: string
++- oracle_OracleRequestPacketData: record
+|  |- client_id: string
+|  |- oracle_script_id: integer
+|  |- calldata: string
+|  |- ask_count: integer
+|  |- min_count: integer
++- oracle_OracleResponsePacketData: record
+|  |- client_id: string
+|  |- request_id: integer
+|  |- ans_count: integer
+|  |- request_time: integer
+|  |- resolve_time: integer
+|  |- resolve_status: string
+|  |- result: string
 +- cosmos_sdk_MsgDelegate: record
 |  +- amount: record
 |  |  |- amount: integer
@@ -146,6 +163,72 @@
 |  |  |- amount: integer
 |  |  |- denom: string
 |  |- from_address: string
++- cosmos_sdk_MsgBeginRedelegate: record
+|  |- delegator_address: string
+|  |- validator_src_address: string
+|  |- validator_dst_address: string
+|  +- amount: record
+|  |  |- amount: integer
+|  |  |- denom: string
++- cosmos_sdk_MsgCreateValidator: record
+|  +- description: record
+|  |  |- moniker: string
+|  |  |- identity: string
+|  |  |- website: string
+|  |  |- security_contact: string
+|  |  |- details: string
+|  +- commission: record
+|  |  |- rate: integer
+|  |  |- max_rate: integer
+|  |  |- max_change_rate: integer
+|  |- min_self_delegation: integer
+|  |- delegator_address: string
+|  |- validator_address: string
+|  |- pubkey: string
+|  +- value: record
+|  |  |- amount: integer
+|  |  |- denom: string
++- cosmos_sdk_MsgDeposit: record
+|  |- proposal_id: integer
+|  |- depositor: string
+|  +- amount: record (repeated)
+|  |  |- amount: integer
+|  |  |- denom: string
++- cosmos_sdk_MsgFundCommunityPool: record
+|  |- depositor: string
+|  +- amount: record (repeated)
+|  |  |- amount: integer
+|  |  |- denom: string
++- cosmos_sdk_MsgModifyWithdrawAddress: record
+|  |- delegator_address: string
+|  |- withdraw_address: string
++- cosmos_sdk_MsgSubmitEvidence: record
+|  |- submitter: string
+|  |- evidence: string
++- cosmos_sdk_MsgSubmitProposal: record
+|  |- content: string
+|  |- proposer: string
+|  +- initial_deposit: record (repeated)
+|  |  |- amount: integer
+|  |  |- denom: string
++- cosmos_sdk_MsgUndelegate: record
+|  |- delegator_address: string
+|  |- validator_address: string
+|  +- amount: record
+|  |  |- amount: integer
+|  |  |- denom: string
++- cosmos_sdk_MsgUnjail: record
+|  |- address: string
++- cosmos_sdk_MsgVerifyInvariant: record
+|  |- sender: string
+|  |- invariant_module_name: string
+|  |- invariant_route: string
++- cosmos_sdk_MsgVote: record
+|  |- proposal_id: integer
+|  |- voter: string
+|  |- option: integer
++- cosmos_sdk_MsgWithdrawValidatorCommission: record
+|  |- validator_address: integer
 ```
 
 All message types:
@@ -159,27 +242,27 @@ oracle_EditDataSource
 oracle_EditOracleScript
 oracle_Report
 oracle_Request
-oracle_RemoveReporter -
-oracle_OracleRequestPacketData -
-oracle_OracleResponsePacketData -
+oracle_RemoveReporter
+oracle_OracleRequestPacketData
+oracle_OracleResponsePacketData
 
 
-cosmos_sdk_MsgBeginRedelegate
-cosmos_sdk_MsgCreateValidator
-cosmos_sdk_MsgDelegate +
-cosmos_sdk_MsgDeposit
-cosmos_sdk_MsgEditValidator +
-cosmos_sdk_MsgFundCommunityPool
-cosmos_sdk_MsgModifyWithdrawAddress
-cosmos_sdk_MsgMultiSend +
-cosmos_sdk_MsgSend +
-cosmos_sdk_MsgSubmitEvidence
-cosmos_sdk_MsgSubmitProposal
-cosmos_sdk_MsgUndelegate
-cosmos_sdk_MsgUnjail
-cosmos_sdk_MsgVerifyInvariant
-cosmos_sdk_MsgVote
-cosmos_sdk_MsgWithdrawDelegationReward
+cosmos_sdk_MsgBeginRedelegate 
+cosmos_sdk_MsgCreateValidator 
+cosmos_sdk_MsgDelegate 
+cosmos_sdk_MsgDeposit 
+cosmos_sdk_MsgEditValidator 
+cosmos_sdk_MsgFundCommunityPool 
+cosmos_sdk_MsgModifyWithdrawAddress 
+cosmos_sdk_MsgMultiSend 
+cosmos_sdk_MsgSend 
+cosmos_sdk_MsgSubmitEvidence 
+cosmos_sdk_MsgSubmitProposal 
+cosmos_sdk_MsgUndelegate 
+cosmos_sdk_MsgUnjail 
+cosmos_sdk_MsgVerifyInvariant 
+cosmos_sdk_MsgVote 
+cosmos_sdk_MsgWithdrawDelegationReward -
 cosmos_sdk_MsgWithdrawValidatorCommission
 ```
 

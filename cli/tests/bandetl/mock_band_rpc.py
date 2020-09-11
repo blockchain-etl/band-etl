@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2020 Evgeny Medvedev evge.medvedev@gmail.com
+# Copyright (c) 2020 Evgeny Medvedev, evge.medvedev@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,30 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import click
-from bandetl.cli.export_blocks import export_blocks
-from bandetl.cli.stream import stream
-from bandetl.cli.get_block_range_for_date import get_block_range_for_date
+import decimal
+import json
 
 
-@click.group()
-@click.version_option(version='0.0.1')
-@click.pass_context
-def cli(ctx):
-    pass
+class MockBandRpc:
+    def __init__(self, read_resource):
+        self.read_resource = read_resource
+
+    def get_transactions(self, block_id, page=1, limit=10000):
+        file_content = self.read_resource(f'rpc_response_txs_{block_id}_{page}_{limit}.json')
+        return json_loads(file_content)
+
+    def get_block(self, block_id):
+        file_content = self.read_resource(f'rpc_response_blocks_{block_id}.json')
+        return json_loads(file_content)
+
+    def get_oracle_request(self, request_id):
+        file_content = self.read_resource(f'rpc_response_oracle_requests_{request_id}.json')
+        return json_loads(file_content)
+
+    def get_oracle_script(self, oracle_script_id):
+        file_content = self.read_resource(f'rpc_response_oracle_scripts_{oracle_script_id}.json')
+        return json_loads(file_content)
 
 
-# export
-cli.add_command(export_blocks, "export_blocks")
-cli.add_command(stream, "stream")
-cli.add_command(get_block_range_for_date, "get_block_range_for_date")
-
+def json_loads(s):
+    return json.loads(s, parse_float=decimal.Decimal)

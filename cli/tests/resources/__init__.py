@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2020 Evgeny Medvedev evge.medvedev@gmail.com
+# Copyright (c) 2020 Evgeny Medvedev, evge.medvedev@gmail.com
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,21 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import click
-from bandetl.cli.export_blocks import export_blocks
-from bandetl.cli.stream import stream
-from bandetl.cli.get_block_range_for_date import get_block_range_for_date
+
+import os
 
 
-@click.group()
-@click.version_option(version='0.0.1')
-@click.pass_context
-def cli(ctx):
-    pass
+def read_resource(groups, file_name):
+    current_file_dir = os.path.dirname(__file__)
+    fixture_file_name = os.path.join(current_file_dir, *groups, file_name)
 
+    if not os.path.exists(fixture_file_name):
+        print(f'File {fixture_file_name} not found')
+        return ''
 
-# export
-cli.add_command(export_blocks, "export_blocks")
-cli.add_command(stream, "stream")
-cli.add_command(get_block_range_for_date, "get_block_range_for_date")
-
+    with open(fixture_file_name, encoding="utf-8") as file_handle:
+        return file_handle.read()
