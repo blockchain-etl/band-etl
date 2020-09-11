@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 import click
-from bandetl.jobs.export_transactions_job import ExportTransactionsJob
+from bandetl.jobs.export_blocks_job import ExportBlocksJob
 from bandetl.jobs.exporters.band_item_exporter import BandItemExporter
 from bandetl.rpc.band_rpc import BandRpc
 
@@ -45,13 +45,13 @@ logging_basic_config()
 @click.option('-o', '--output-dir', default=None, type=str, help='The output directory for block data.')
 @click.option('-f', '--output-format', default='json', show_default=True, type=click.Choice(['json']),
               help='The output format.')
-def export_transactions(start_block, end_block, provider_uri, provider_uri_tendermint, max_workers, output_dir, output_format):
-    """Exports ds blocks."""
+def export_blocks(start_block, end_block, provider_uri, provider_uri_tendermint, max_workers, output_dir, output_format):
+    """Export blocks."""
 
     band_rpc = ThreadLocalProxy(lambda: BandRpc(provider_uri))
     tendermint_rpc = ThreadLocalProxy(lambda: TendermintRpc(provider_uri_tendermint))
 
-    job = ExportTransactionsJob(
+    job = ExportBlocksJob(
         start_block=start_block,
         end_block=end_block,
         band_service=BandService(band_rpc, tendermint_rpc),
