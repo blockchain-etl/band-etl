@@ -1,0 +1,11 @@
+{
+   "height" : "1068951",
+   "result" : {
+      "description" : "TBD",
+      "filename" : "b89d83796a6472a25a6d0ac344f36511eab259671561bdbe4324996b87de35da",
+      "name" : "DEX_01",
+      "source_code_url" : "https://ipfs.io/ipfs/QmQwGmgL3iqzekZRJrk2wWVDUvBqtVopr7PTqEFnoxspfS",
+      "owner" : "band17f6n25na5kume99j4qdfzlf7jnpu9u2neqqvt8",
+      "schema" : "{base_symbol:string,quote_symbol:string,multiplier:u64}/{px:u64}"
+   }
+}
