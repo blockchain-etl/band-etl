@@ -15,6 +15,11 @@
         "mode": "NULLABLE"
     },
     {
+        "name": "oracle_request_id",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
         "name": "request",
         "type": "RECORD",
         "mode": "NULLABLE",

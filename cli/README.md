@@ -21,5 +21,5 @@ Does Band define any custom transaction types.
 - time in blocks has nanosecond resolution. BigQuery support microsecond resolution. That's why we have `*_truncated`
     timestamp columns.
 - Calculate balances using logs, message, transfer events. ex. transactions_53_multisend.json
-- Transactions don't have gas prices
+- Transactions don't have gas prices.
 - How to convert pub_key to address. 
