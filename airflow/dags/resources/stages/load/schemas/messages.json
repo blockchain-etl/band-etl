@@ -476,6 +476,467 @@
         ]
     },
     {
+        "name": "oracle_RemoveReporter",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "validator",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "reporter",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_OracleRequestPacketData",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "client_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "oracle_script_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "calldata",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "ask_count",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "min_count",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "oracle_OracleResponsePacketData",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "client_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "request_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "ans_count",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "request_time",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "resolve_time",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "resolve_status",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "result",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgBeginRedelegate",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "delegator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator_src_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator_dst_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgCreateValidator",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "description",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "moniker",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "identity",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "website",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "security_contact",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "details",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "commission",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "rate",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "max_rate",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "max_change_rate",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "min_self_delegation",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "delegator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "pubkey",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "value",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgDeposit",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "proposal_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "depositor",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgFundCommunityPool",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "depositor",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgModifyWithdrawAddress",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "delegator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "withdraw_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgSubmitEvidence",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "submitter",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "evidence",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgSubmitProposal",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "content",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "proposer",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "initial_deposit",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgUndelegate",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "delegator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "NULLABLE",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgUnjail",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgVerifyInvariant",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "sender",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "invariant_module_name",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "invariant_route",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgVote",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "proposal_id",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "voter",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "option",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "cosmos_sdk_MsgWithdrawValidatorCommission",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "validator_address",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
         "name": "raw_json",
         "type": "STRING",
         "description": "",
