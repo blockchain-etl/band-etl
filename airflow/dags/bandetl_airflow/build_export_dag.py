@@ -10,7 +10,7 @@ from airflow.operators import python_operator
 
 from bandetl.cli import (
     get_block_range_for_date,
-    export_transactions,
+    export_blocks,
 )
 from bandetl_airflow.gcs_utils import upload_to_gcs
 
@@ -87,15 +87,15 @@ def build_export_dag(
 
         return int(start_block), int(end_block)
 
-    def export_transactions_command(execution_date, provider_uri_combined, **kwargs):
+    def export_blocks_command(execution_date, provider_uri_combined, **kwargs):
         provider_uri_rest, provider_uri_tendermint = parse_provider_uri(provider_uri_combined)
         with TemporaryDirectory() as tempdir:
             start_block, end_block = get_block_range(tempdir, execution_date, provider_uri_rest)
 
-            logging.info('Calling export_transactions({}, {}, {}, {}, {}, {})'.format(
+            logging.info('Calling export_blocks({}, {}, {}, {}, {}, {})'.format(
                 start_block, end_block, provider_uri_rest, provider_uri_tendermint, export_max_workers, tempdir))
 
-            export_transactions.callback(
+            export_blocks.callback(
                 start_block=start_block,
                 end_block=end_block,
                 provider_uri=provider_uri_rest,
@@ -136,10 +136,10 @@ def build_export_dag(
 
     # Operators
 
-    export_transactions_operator = add_export_task(
+    export_blocks_operator = add_export_task(
         True,
-        "export_transactions",
-        add_provider_uri_fallback_loop(export_transactions_command, provider_uris),
+        "export_blocks",
+        add_provider_uri_fallback_loop(export_blocks_command, provider_uris),
     )
 
     return dag
