@@ -1,0 +1,324 @@
+{
+   "total_count" : "3",
+   "count" : "3",
+   "page_number" : "1",
+   "txs" : [
+      {
+         "gas_used" : "49646",
+         "timestamp" : "2020-08-08T08:07:37Z",
+         "txhash" : "6825F80AD39FC01F414F83E90748C8D88EBBA20D57F294A477C4B028A4F76914",
+         "height" : "111280",
+         "gas_wanted" : "200000",
+         "logs" : [
+            {
+               "log" : "",
+               "msg_index" : 0,
+               "events" : [
+                  {
+                     "type" : "message",
+                     "attributes" : [
+                        {
+                           "value" : "report",
+                           "key" : "action"
+                        }
+                     ]
+                  },
+                  {
+                     "type" : "report",
+                     "attributes" : [
+                        {
+                           "value" : "1462",
+                           "key" : "id"
+                        },
+                        {
+                           "key" : "validator",
+                           "value" : "bandvaloper1trx2cm6vm9v63grg9uhmk7sy233zve4q25rgre"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "tx" : {
+            "type" : "cosmos-sdk/StdTx",
+            "value" : {
+               "msg" : [
+                  {
+                     "type" : "oracle/Report",
+                     "value" : {
+                        "validator" : "bandvaloper1trx2cm6vm9v63grg9uhmk7sy233zve4q25rgre",
+                        "reporter" : "band1t2tcc53d769y06p4nju09dm4uudqg8fdhgqaum",
+                        "raw_reports" : [
+                           {
+                              "external_id" : "43",
+                              "data" : "MC4xNDM1MTczMjI1NDA4MzA2Ngo="
+                           },
+                           {
+                              "external_id" : "41",
+                              "data" : "MC4xNDM1MDAwMAo="
+                           },
+                           {
+                              "data" : "MC4xNDM1MTcyNDAxNTE5OTA1Cg==",
+                              "external_id" : "42"
+                           },
+                           {
+                              "external_id" : "44",
+                              "data" : "MC4xNDM1MDAwMAo="
+                           },
+                           {
+                              "external_id" : "21",
+                              "data" : "MC4xMjUK"
+                           },
+                           {
+                              "data" : "MC4xMjUyCg==",
+                              "external_id" : "11"
+                           },
+                           {
+                              "data" : "MC4xMjUyCg==",
+                              "external_id" : "22"
+                           },
+                           {
+                              "data" : "MC4xMjUyODQK",
+                              "external_id" : "12"
+                           },
+                           {
+                              "data" : "MS4wCg==",
+                              "external_id" : "31"
+                           }
+                        ],
+                        "request_id" : "1462"
+                     }
+                  }
+               ],
+               "fee" : {
+                  "gas" : "200000",
+                  "amount" : []
+               },
+               "signatures" : [
+                  {
+                     "signature" : "dqzBMkptAi7pBWRsYn3qlb+1pelxAKTPCgaH+l9e5SxCtvxdjCUvaLgr27MBdViNsdSBDGoXmMw2vbM18SaMOA==",
+                     "pub_key" : {
+                        "value" : "Ar86nkGaRDdxcg60F5WActI6nDJZYjNj5G27XyxhQfUD",
+                        "type" : "tendermint/PubKeySecp256k1"
+                     }
+                  }
+               ],
+               "memo" : ""
+            }
+         },
+         "raw_log" : "[{\"msg_index\":0,\"log\":\"\",\"events\":[{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"report\"}]},{\"type\":\"report\",\"attributes\":[{\"key\":\"id\",\"value\":\"1462\"},{\"key\":\"validator\",\"value\":\"bandvaloper1trx2cm6vm9v63grg9uhmk7sy233zve4q25rgre\"}]}]}]"
+      },
+      {
+         "raw_log" : "[{\"msg_index\":0,\"log\":\"\",\"events\":[{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"report\"}]},{\"type\":\"report\",\"attributes\":[{\"key\":\"id\",\"value\":\"1462\"},{\"key\":\"validator\",\"value\":\"bandvaloper1alzj765pzuhtjkmslme4fdpeakc0036xnyjltn\"}]}]}]",
+         "tx" : {
+            "value" : {
+               "msg" : [
+                  {
+                     "type" : "oracle/Report",
+                     "value" : {
+                        "validator" : "bandvaloper1alzj765pzuhtjkmslme4fdpeakc0036xnyjltn",
+                        "raw_reports" : [
+                           {
+                              "data" : "MC4xNDM1MTczMjI1NDA4MzA2Ngo=",
+                              "external_id" : "43"
+                           },
+                           {
+                              "external_id" : "42",
+                              "data" : "MC4xNDM1MTcyNDAxNTE5OTA1Cg=="
+                           },
+                           {
+                              "data" : "MC4xNDM1MDAwMAo=",
+                              "external_id" : "44"
+                           },
+                           {
+                              "external_id" : "41",
+                              "data" : "MC4xNDM1MDAwMAo="
+                           },
+                           {
+                              "data" : "MC4xMjUK",
+                              "external_id" : "21"
+                           },
+                           {
+                              "external_id" : "11",
+                              "data" : "MC4xMjUyCg=="
+                           },
+                           {
+                              "external_id" : "22",
+                              "data" : "MC4xMjUxCg=="
+                           },
+                           {
+                              "external_id" : "12",
+                              "data" : "MC4xMjUyODQK"
+                           },
+                           {
+                              "external_id" : "31",
+                              "data" : "MS4wCg=="
+                           }
+                        ],
+                        "reporter" : "band1q6rzxhe88p93tg2rc80dqln3lxh7nlzly63h9p",
+                        "request_id" : "1462"
+                     }
+                  }
+               ],
+               "fee" : {
+                  "gas" : "200000",
+                  "amount" : []
+               },
+               "signatures" : [
+                  {
+                     "signature" : "BhzsrUBtlhyxatlCdo0lLMHQ48M/+oW2/NVzcg876MVClweqRgQ70+E2mF+PmduJ4quZ+eLilrn8miW6hMp4uw==",
+                     "pub_key" : {
+                        "value" : "A+d0ZRilwIiuPUkcVsAp/ggSbFrP2qUj6xJ4QeQJKYM4",
+                        "type" : "tendermint/PubKeySecp256k1"
+                     }
+                  }
+               ],
+               "memo" : ""
+            },
+            "type" : "cosmos-sdk/StdTx"
+         },
+         "logs" : [
+            {
+               "log" : "",
+               "msg_index" : 0,
+               "events" : [
+                  {
+                     "type" : "message",
+                     "attributes" : [
+                        {
+                           "value" : "report",
+                           "key" : "action"
+                        }
+                     ]
+                  },
+                  {
+                     "attributes" : [
+                        {
+                           "value" : "1462",
+                           "key" : "id"
+                        },
+                        {
+                           "key" : "validator",
+                           "value" : "bandvaloper1alzj765pzuhtjkmslme4fdpeakc0036xnyjltn"
+                        }
+                     ],
+                     "type" : "report"
+                  }
+               ]
+            }
+         ],
+         "gas_wanted" : "200000",
+         "txhash" : "51C066A9C3B09CDB1389A7673540DF471383AB6EEF8B79DD0BFBA819AE69A23C",
+         "timestamp" : "2020-08-08T08:07:37Z",
+         "gas_used" : "50192",
+         "height" : "111280"
+      },
+      {
+         "txhash" : "F354945F64939CF80E4BF415652F937F68A3795E3ABF670DB1DF6CAA0181EE5B",
+         "timestamp" : "2020-08-08T08:07:37Z",
+         "gas_used" : "53798",
+         "height" : "111280",
+         "gas_wanted" : "200000",
+         "logs" : [
+            {
+               "msg_index" : 0,
+               "log" : "",
+               "events" : [
+                  {
+                     "type" : "message",
+                     "attributes" : [
+                        {
+                           "value" : "report",
+                           "key" : "action"
+                        }
+                     ]
+                  },
+                  {
+                     "type" : "report",
+                     "attributes" : [
+                        {
+                           "value" : "1462",
+                           "key" : "id"
+                        },
+                        {
+                           "value" : "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                           "key" : "validator"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "raw_log" : "[{\"msg_index\":0,\"log\":\"\",\"events\":[{\"type\":\"message\",\"attributes\":[{\"key\":\"action\",\"value\":\"report\"}]},{\"type\":\"report\",\"attributes\":[{\"key\":\"id\",\"value\":\"1462\"},{\"key\":\"validator\",\"value\":\"bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl\"}]}]}]",
+         "tx" : {
+            "value" : {
+               "fee" : {
+                  "amount" : [],
+                  "gas" : "200000"
+               },
+               "signatures" : [
+                  {
+                     "pub_key" : {
+                        "type" : "tendermint/PubKeySecp256k1",
+                        "value" : "A5mnLNu7Cz4ekZetx7GPAhdqFp40px+pWWCWnQIpDC62"
+                     },
+                     "signature" : "5lLqIfFxs/j1kkEpReoyXZ8YtYyvYcPstT3Sq+FMSh85XGvvrrYMnzEJcd2qDEePJ9J8tE7Vb6rnvqiajn8XUQ=="
+                  }
+               ],
+               "msg" : [
+                  {
+                     "value" : {
+                        "validator" : "bandvaloper1xnryftxluq49fk52c5j5zrxcc5rzye96s70msl",
+                        "raw_reports" : [
+                           {
+                              "external_id" : "43",
+                              "data" : "MC4xNDM1MTczMjI1NDA4MzA2Ngo="
+                           },
+                           {
+                              "data" : "MC4xNDM1MDAwMAo=",
+                              "external_id" : "41"
+                           },
+                           {
+                              "data" : "MC4xNDM1MTcyNDAxNTE5OTA1Cg==",
+                              "external_id" : "42"
+                           },
+                           {
+                              "data" : "MC4xNDM1MDAwMAo=",
+                              "external_id" : "44"
+                           },
+                           {
+                              "data" : "MC4xMjUyCg==",
+                              "external_id" : "11"
+                           },
+                           {
+                              "data" : "MC4xMjUK",
+                              "external_id" : "21"
+                           },
+                           {
+                              "data" : "MC4xMjUyODQK",
+                              "external_id" : "12"
+                           },
+                           {
+                              "data" : "MC4xMjUxCg==",
+                              "external_id" : "22"
+                           },
+                           {
+                              "data" : "MS4wCg==",
+                              "external_id" : "31"
+                           }
+                        ],
+                        "reporter" : "band1ksy88g3kxadw8kpk3ur5tj2922mv28a8wdh95z",
+                        "request_id" : "1462"
+                     },
+                     "type" : "oracle/Report"
+                  }
+               ],
+               "memo" : ""
+            },
+            "type" : "cosmos-sdk/StdTx"
+         }
+      }
+   ],
+   "page_total" : "1",
+   "limit" : "100"
+}
