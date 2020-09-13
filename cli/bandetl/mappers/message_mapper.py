@@ -2,7 +2,7 @@ from bandetl.utils.string_utils import json_dumps
 
 
 def map_messages(block, tx):
-    for raw_msg in tx.get('tx', {}).get('value', {}).get('msg', []):
+    for index, raw_msg in enumerate(tx.get('tx', {}).get('value', {}).get('msg', [])):
         message_type = raw_msg.get('type')
         normalized_message_type = normalize_message_type(message_type)
 
@@ -15,6 +15,7 @@ def map_messages(block, tx):
             'message_type': message_type,
             'normalized_message_type': normalized_message_type,
             normalized_message_type: raw_msg.get('value'),
+            'index': index,
             # 'raw_json': json_dumps(raw_msg),
         }
 

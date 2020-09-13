@@ -70,18 +70,19 @@ def test_stream(tmpdir, start_block, end_block, batch_size, resource_group, enti
                 read_resource_lambda=lambda file: read_resource(resource_group, file)))
     )
 
+    output_file_mapping = {
+        'block': blocks_output_file,
+        'transaction': transactions_output_file,
+        'log': logs_output_file,
+        'message': messages_output_file,
+        'block_event': block_events_output_file,
+        'oracle_request': oracle_requests_output_file,
+    }
     streamer_adapter = BandStreamerAdapter(
         band_service=band_service,
         batch_size=batch_size,
         item_exporter=CompositeItemExporter(
-            filename_mapping={
-                'block': blocks_output_file,
-                'transaction': transactions_output_file,
-                'log': logs_output_file,
-                'message': messages_output_file,
-                'block_event': block_events_output_file,
-                'oracle_request': oracle_requests_output_file,
-            }
+            filename_mapping=output_file_mapping
         ),
         entity_types=entity_types,
     )
@@ -93,44 +94,17 @@ def test_stream(tmpdir, start_block, end_block, batch_size, resource_group, enti
     )
     streamer.stream()
 
-    if EntityType.BLOCK in entity_types:
+    expected_file_mapping = {
+        'block': 'expected_blocks.json',
+        'transaction': 'expected_transactions.json',
+        'log': 'expected_logs.json',
+        'message': 'expected_messages.json',
+        'block_event': 'expected_block_events.json',
+        'oracle_request': 'expected_oracle_requests.json',
+    }
+    for entity_type in entity_types:
         print('=====================')
-        print(read_file(blocks_output_file))
+        print(read_file(output_file_mapping[entity_type]))
         compare_lines_ignore_order(
-            read_resource(resource_group, 'expected_blocks.json'), read_file(blocks_output_file)
-        )
-
-    if EntityType.LOG in entity_types:
-        print('=====================')
-        print(read_file(logs_output_file))
-        compare_lines_ignore_order(
-            read_resource(resource_group, 'expected_logs.json'), read_file(logs_output_file)
-        )
-
-    if EntityType.MESSAGE in entity_types:
-        print('=====================')
-        print(read_file(messages_output_file))
-        compare_lines_ignore_order(
-            read_resource(resource_group, 'expected_messages.json'), read_file(messages_output_file)
-        )
-
-    if EntityType.TRANSACTION in entity_types:
-        print('=====================')
-        print(read_file(transactions_output_file))
-        compare_lines_ignore_order(
-            read_resource(resource_group, 'expected_transactions.json'), read_file(transactions_output_file)
-        )
-
-    if EntityType.BLOCK_EVENT in entity_types:
-        print('=====================')
-        print(read_file(block_events_output_file))
-        compare_lines_ignore_order(
-            read_resource(resource_group, 'expected_block_events.json'), read_file(block_events_output_file)
-        )
-
-    if EntityType.ORACLE_REQUEST in entity_types:
-        print('=====================')
-        print(read_file(oracle_requests_output_file))
-        compare_lines_ignore_order(
-            read_resource(resource_group, 'expected_oracle_requests.json'), read_file(oracle_requests_output_file)
+            read_resource(resource_group, expected_file_mapping[entity_type]), read_file(output_file_mapping[entity_type])
         )

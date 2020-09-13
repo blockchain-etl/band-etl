@@ -38,8 +38,8 @@ class ItemIdCalculator:
             return concat(item_type, item.get('block_hash'))
         elif item_type == 'transaction' and item.get('txhash') is not None:
             return concat(item_type, item.get('txhash'))
-        elif item_type == 'message' and item.get('txhash') is not None:
-            return concat(item_type, item.get('txhash'))
+        elif item_type == 'message' and item.get('txhash') is not None and item.get('index') is not None:
+            return concat(item_type, item.get('txhash'), item.get('index'))
         elif item_type == 'block_event' and item.get('block_height') is not None and item.get('index') is not None:
             return concat(item_type, item.get('block_height'), item.get('index'))
         elif item_type == 'log' and item.get('txhash') is not None and item.get('log_index') is not None:
