@@ -287,7 +287,6 @@
             }
         ]
     },
-
     {
         "name": "cosmos_sdk_MsgDelegate",
         "type": "RECORD",
