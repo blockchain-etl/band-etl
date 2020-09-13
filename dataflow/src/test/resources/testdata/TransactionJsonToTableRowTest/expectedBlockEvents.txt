@@ -1,0 +1,2 @@
+GenericData{classInfo=[f], {type=block_event, block_height=29025, block_timestamp=2020-08-05T09:59:55.534489913Z, block_timestamp_truncated=2020-08-05T09:59:55.534489Z, event_type=rewards, block_event_type=begin}}
+GenericData{classInfo=[f], {type=block_event, block_height=568661, block_timestamp=2020-08-24T09:30:48.349376931Z, block_timestamp_truncated=2020-08-24T09:30:48.349376Z, event_type=resolve, block_event_type=end}}
