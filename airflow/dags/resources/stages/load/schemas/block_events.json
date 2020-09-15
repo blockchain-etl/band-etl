@@ -47,6 +47,6 @@
         "name": "raw_json",
         "type": "STRING",
         "description": "",
-        "mode": "REQUIRED"
+        "mode": "NULLABLE"
     }
 ]
