@@ -33,6 +33,7 @@ setup(
         'blockchain-etl-common==1.3.0',
         'bech32==1.2.0',
         'ecdsa==0.16.0',
+        'bip32==0.0.8',
         'requests==2.24.0',
         'python-dateutil==2.8.1',
         'six==1.15.0',
