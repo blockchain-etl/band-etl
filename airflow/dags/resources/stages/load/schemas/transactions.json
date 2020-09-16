@@ -41,5 +41,40 @@
         "name": "sender",
         "type": "STRING",
         "description": ""
+    },
+    {
+        "name": "fee",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "amount",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "amount",
+                        "type": "INTEGER",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "denom",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "gas",
+                "type": "INTEGER",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "name": "memo",
+        "type": "STRING",
+        "description": "",
+        "mode": "NULLABLE"
     }
 ]
