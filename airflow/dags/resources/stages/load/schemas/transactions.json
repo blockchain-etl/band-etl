@@ -36,5 +36,10 @@
         "name": "gas_used",
         "type": "NUMERIC",
         "description": ""
+    },
+    {
+        "name": "sender",
+        "type": "STRING",
+        "description": ""
     }
 ]
