@@ -31,6 +31,10 @@ setup(
     python_requires='>=3.6.0,<3.8.0',
     install_requires=[
         'blockchain-etl-common==1.3.0',
+        'bech32==1.2.0',
+        'ecdsa==0.16.0',
+        'bip32==0.0.8',
+        'mnemonic==0.19',
         'requests==2.24.0',
         'python-dateutil==2.8.1',
         'six==1.15.0',
