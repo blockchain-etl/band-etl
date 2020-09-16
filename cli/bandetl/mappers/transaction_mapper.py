@@ -1,5 +1,5 @@
 from bandetl.utils.band_utils import pubkey_acc_to_address
-from bandetl.utils.string_utils import base64_string_to_bytes
+from bandetl.utils.string_utils import base64_string_to_bytes, to_int
 
 
 def map_transaction(block, tx):
@@ -15,6 +15,24 @@ def map_transaction(block, tx):
         'gas_wanted': tx.get('gas_wanted'),
         'gas_used': tx.get('gas_used'),
         'sender': address,
+        'fee': get_fee(tx),
+        'memo': tx.get('tx', EMPTY_OBJECT).get('value', EMPTY_OBJECT).get('memo')
+    }
+
+
+def get_fee(tx):
+    fee = tx.get('tx', EMPTY_OBJECT).get('value', EMPTY_OBJECT).get('fee', EMPTY_OBJECT)
+    amount_list = [map_amount(amt) for amt in fee.get('amount', EMPTY_LIST)]
+    return {
+        'amount': amount_list,
+        'gas': to_int(fee.get('gas'))
+    }
+
+
+def map_amount(amount):
+    return {
+        'denom': amount.get('denom'),
+        'amount': to_int(amount.get('amount'))
     }
 
 
