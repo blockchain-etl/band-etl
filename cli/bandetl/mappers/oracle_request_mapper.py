@@ -1,6 +1,7 @@
+from pyband import PyObi
+
 from bandetl.utils.band_utils import decode_oracle_request_calldata, decode_oracle_response_result
 from bandetl.utils.string_utils import json_dumps
-from pyobi import PyObi
 
 
 def map_oracle_requests(block, oracle_request_id, oracle_request, oracle_script):
