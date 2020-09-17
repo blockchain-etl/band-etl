@@ -40,9 +40,9 @@ def get_sender_from_transaction(tx):
     signatures = tx.get('tx', EMPTY_OBJECT).get('value', EMPTY_OBJECT).get('signatures', EMPTY_LIST)
     if len(signatures) > 0:
         first_signature = signatures[0]
-        pub_key = first_signature.get('pub_key', EMPTY_OBJECT).get('value')
-        if pub_key:
-            pub_key_bytes = base64_string_to_bytes(pub_key)
+        pub_key = first_signature.get('pub_key', EMPTY_OBJECT)
+        if pub_key and pub_key.get('value'):
+            pub_key_bytes = base64_string_to_bytes(pub_key.get('value'))
             address = pubkey_acc_to_address(pub_key_bytes)
             return address
         else:
