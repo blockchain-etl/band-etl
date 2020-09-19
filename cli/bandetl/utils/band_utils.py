@@ -1,10 +1,7 @@
-import hashlib
 import logging
 
-from ecdsa import VerifyingKey, SECP256k1
-
 from bandetl.utils.string_utils import base64_string_to_bytes
-from pyband.wallet import PublicKey
+from pyband.wallet import Address
 
 
 def decode_oracle_request_calldata(obi, calldata):
@@ -31,15 +28,9 @@ def decode_oracle_response_result(obi, result):
         return None
 
 
-def pubkey_acc_to_address(pubkey_bytes):
-    if pubkey_bytes is None:
+def from_val_to_acc_address(val_address):
+    if val_address is None:
         return None
 
-    verifying_key = VerifyingKey.from_string(
-        pubkey_bytes, curve=SECP256k1, hashfunc=hashlib.sha256
-    )
-
-    pubkey = PublicKey(_error_do_not_use_init_directly=True)
-    pubkey.verify_key = verifying_key
-
-    return pubkey.to_address().to_acc_bech32()
+    address = Address.from_val_bech32(val_address)
+    return address.to_acc_bech32()

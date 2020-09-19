@@ -492,80 +492,6 @@
         ]
     },
     {
-        "name": "oracle_OracleRequestPacketData",
-        "type": "RECORD",
-        "mode": "NULLABLE",
-        "fields": [
-            {
-                "name": "client_id",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "oracle_script_id",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "calldata",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "ask_count",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "min_count",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            }
-        ]
-    },
-    {
-        "name": "oracle_OracleResponsePacketData",
-        "type": "RECORD",
-        "mode": "NULLABLE",
-        "fields": [
-            {
-                "name": "client_id",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "request_id",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "ans_count",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "request_time",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "resolve_time",
-                "type": "INTEGER",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "resolve_status",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "result",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            }
-        ]
-    },
-    {
         "name": "cosmos_sdk_MsgBeginRedelegate",
         "type": "RECORD",
         "mode": "NULLABLE",
@@ -924,13 +850,30 @@
         ]
     },
     {
+        "name": "cosmos_sdk_MsgWithdrawDelegationReward",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "delegator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "validator_address",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
         "name": "cosmos_sdk_MsgWithdrawValidatorCommission",
         "type": "RECORD",
         "mode": "NULLABLE",
         "fields": [
             {
                 "name": "validator_address",
-                "type": "INTEGER",
+                "type": "STRING",
                 "mode": "NULLABLE"
             }
         ]

@@ -49,6 +49,8 @@ def read_resource(resource_group, file_name):
     skip_if_slow_tests_disabled([568661, 568661, 'oracle_report', 'online']),
     (571845, 571845, 'oracle_request', 'mock'),
     skip_if_slow_tests_disabled([571845, 571845, 'oracle_request', 'online']),
+    (1166615, 1166615, 'empty_pubkey', 'mock'),
+    skip_if_slow_tests_disabled([1166615, 1166615, 'empty_pubkey', 'online']),
 ])
 def test_export_blocks_job(tmpdir, start_block, end_block, resource_group, provider_type):
     job = ExportBlocksJob(

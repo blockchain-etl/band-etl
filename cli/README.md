@@ -22,4 +22,3 @@ Does Band define any custom transaction types.
     timestamp columns.
 - Calculate balances using logs, message, transfer events. ex. transactions_53_multisend.json
 - Transactions don't have gas prices.
-- How to convert pub_key to address. 
