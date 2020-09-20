@@ -1,5 +1,5 @@
-from bandetl.utils.band_utils import pubkey_acc_to_address
-from bandetl.utils.string_utils import base64_string_to_bytes, to_int
+from bandetl.utils.band_utils import from_val_to_acc_address
+from bandetl.utils.string_utils import to_int
 
 
 def map_transaction(block, tx):
@@ -37,18 +37,74 @@ def map_amount(amount):
 
 
 def get_sender_from_transaction(tx):
-    signatures = tx.get('tx', EMPTY_OBJECT).get('value', EMPTY_OBJECT).get('signatures', EMPTY_LIST)
-    if len(signatures) > 0:
-        first_signature = signatures[0]
-        pub_key = first_signature.get('pub_key', EMPTY_OBJECT)
-        if pub_key and pub_key.get('value'):
-            pub_key_bytes = base64_string_to_bytes(pub_key.get('value'))
-            address = pubkey_acc_to_address(pub_key_bytes)
-            return address
-        else:
-            return None
-    else:
+    msgs = tx.get('tx', EMPTY_OBJECT).get('value', EMPTY_OBJECT).get('msg', EMPTY_LIST)
+    if len(msgs) == 0:
         return None
+
+    first_msg = msgs[0]
+    return get_sender_from_message(first_msg)
+
+
+def get_sender_from_message(msg):
+    msg_type = msg.get('type')
+    msg_value = msg.get('value')
+
+    if msg_type == 'oracle/Activate':
+        return from_val_to_acc_address(msg_value.get('validator'))
+    if msg_type == 'oracle/AddReporter':
+        return from_val_to_acc_address(msg_value.get('validator'))
+    if msg_type == 'oracle/CreateDataSource':
+        return msg_value.get('sender')
+    if msg_type == 'oracle/CreateOracleScript':
+        return msg_value.get('sender')
+    if msg_type == 'oracle/EditDataSource':
+        return msg_value.get('sender')
+    if msg_type == 'oracle/EditOracleScript':
+        return msg_value.get('sender')
+    if msg_type == 'oracle/Report':
+        return msg_value.get('reporter')
+    if msg_type == 'oracle/Request':
+        return msg_value.get('sender')
+    if msg_type == 'oracle/RemoveReporter':
+        return from_val_to_acc_address(msg_value.get('validator'))
+
+    if msg_type == 'cosmos-sdk/MsgDelegate':
+        return msg_value.get('delegator_address')
+    if msg_type == 'cosmos-sdk/MsgEditValidator':
+        return from_val_to_acc_address(msg_value.get('address'))
+    if msg_type == 'cosmos-sdk/MsgMultiSend':
+        inputs = msg_value.get('inputs')
+        if inputs:
+            return inputs[0].get('address')
+    if msg_type == 'cosmos-sdk/MsgSend':
+        return msg_value.get('from_address')
+    if msg_type == 'cosmos-sdk/MsgBeginRedelegate':
+        return msg_value.get('delegator_address')
+    if msg_type == 'cosmos-sdk/MsgCreateValidator':
+        return msg_value.get('delegator_address')
+    if msg_type == 'cosmos-sdk/MsgDeposit':
+        return msg_value.get('depositor')
+    if msg_type == 'cosmos-sdk/MsgFundCommunityPool':
+        return msg_value.get('depositor')
+    if msg_type == 'cosmos-sdk/MsgModifyWithdrawAddress':
+        return msg_value.get('delegator_address')
+    if msg_type == 'cosmos-sdk/MsgSubmitEvidence':
+        return msg_value.get('submitter')
+    if msg_type == 'cosmos-sdk/MsgSubmitProposal':
+        return msg_value.get('proposer')
+    if msg_type == 'cosmos-sdk/MsgUndelegate':
+        return msg_value.get('delegator_address')
+    if msg_type == 'cosmos-sdk/MsgUnjail':
+        return from_val_to_acc_address(msg_value.get('address'))
+    if msg_type == 'cosmos-sdk/MsgVerifyInvariant':
+        return msg_value.get('sender')
+    if msg_type == 'cosmos-sdk/MsgVote':
+        return msg_value.get('voter')
+    if msg_type == 'cosmos-sdk/MsgWithdrawDelegationReward':
+        return msg_value.get('delegator_address')
+    if msg_type == 'cosmos-sdk/MsgWithdrawValidatorCommission':
+        return from_val_to_acc_address(msg_value.get('validator_address'))
+    return None
 
 
 EMPTY_OBJECT = {}

@@ -116,20 +116,6 @@
 +- oracle_RemoveReporter: record
 |  |- validator: string
 |  |- reporter: string
-+- oracle_OracleRequestPacketData: record
-|  |- client_id: string
-|  |- oracle_script_id: integer
-|  |- calldata: string
-|  |- ask_count: integer
-|  |- min_count: integer
-+- oracle_OracleResponsePacketData: record
-|  |- client_id: string
-|  |- request_id: integer
-|  |- ans_count: integer
-|  |- request_time: integer
-|  |- resolve_time: integer
-|  |- resolve_status: string
-|  |- result: string
 +- cosmos_sdk_MsgDelegate: record
 |  +- amount: record
 |  |  |- amount: integer
@@ -227,8 +213,11 @@
 |  |- proposal_id: integer
 |  |- voter: string
 |  |- option: integer
++- cosmos_sdk_MsgWithdrawDelegationReward: record
+|  |- delegator_address: string
+|  |- validator_address: string
 +- cosmos_sdk_MsgWithdrawValidatorCommission: record
-|  |- validator_address: integer
+|  |- validator_address: string
 ```
 
 All message types:
@@ -243,9 +232,6 @@ oracle_EditOracleScript
 oracle_Report
 oracle_Request
 oracle_RemoveReporter
-oracle_OracleRequestPacketData
-oracle_OracleResponsePacketData
-
 
 cosmos_sdk_MsgBeginRedelegate 
 cosmos_sdk_MsgCreateValidator 
@@ -262,7 +248,7 @@ cosmos_sdk_MsgUndelegate
 cosmos_sdk_MsgUnjail 
 cosmos_sdk_MsgVerifyInvariant 
 cosmos_sdk_MsgVote 
-cosmos_sdk_MsgWithdrawDelegationReward -
+cosmos_sdk_MsgWithdrawDelegationReward
 cosmos_sdk_MsgWithdrawValidatorCommission
 ```
 
