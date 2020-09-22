@@ -7,5 +7,5 @@ config:
   PROVIDER_URI_TENDERMINT: "http://poa-q2.d3n.xyz:26657"
   STREAM_OUTPUT: "projects/<your_project>/topics/crypto_band"
   GCS_PREFIX: "gs://<your_bucket>/band-etl/streaming"
-  LAG_BLOCKS: "10"
+  LAG_BLOCKS: "0"
   ENTITY_TYPES: "block,transaction,log,message,block_event,oracle_request"
