@@ -88,7 +88,7 @@ Parameter                                                | Description          
 `config.STREAM_OUTPUT`                                   | Google Pub Sub topic path prefix                  | `projects/<your-project>/topics/crypto_band`
 `config.GCS_PREFIX`                                      | Google Storage directory of last synced block file| `gs://<your-bucket>/band-etl/streaming`
 `config.ENTITY_TYPES`                                    | The list of entity types to export                | ``
-`config.LAG_BLOCKS`                                      | The number of blocks to lag behind the network    | `10`
+`config.LAG_BLOCKS`                                      | The number of blocks to lag behind the network    | `0`
 `config.MAX_WORKERS`                                     | The number of workers                             | `4`
 `lsb_file`                                               | Last synced block file name                       | `last_synced_block.txt`
 
