@@ -1,7 +1,7 @@
 stream:
   image:
     repository: blockchainetl/band-etl
-    tag: 0.0.6
+    tag: 0.0.7
 config:
   PROVIDER_URI: "https://poa-api-backup2.bandchain.org"
   PROVIDER_URI_TENDERMINT: "http://poa-q2.d3n.xyz:26657"
