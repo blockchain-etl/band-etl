@@ -39,6 +39,7 @@ setup(
         'python-dateutil==2.8.1',
         'six==1.15.0',
         'click==7.0',
+        'pyband==0.0.8',
     ],
     extras_require={
         'streaming': [
