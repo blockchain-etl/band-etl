@@ -12,7 +12,6 @@ def map_oracle_requests(block, oracle_request_id, oracle_request, oracle_script)
         'block_height': block.get('block_height'),
         'block_timestamp': block.get('block_timestamp'),
         'block_timestamp_truncated': block.get('block_timestamp_truncated'),
-        # 'raw_json': json_dumps(oracle_request),
     }}
 
 
