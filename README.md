@@ -28,7 +28,10 @@ Data is available for you to query right away in
     Refer to [Band ETL Streaming](/streaming) for deployment instructions.  
   
 4. Band data is pulled from Pub/Sub, transformed and streamed to BigQuery. 
-    Refer to [Band ETL Dataflow](/dataflow) for deployment instructions.  
+    Refer to [Band ETL Dataflow](/dataflow) for deployment instructions. 
+    
+5. Band data is pulled from Pub/Sub and BigQuery for metrics calculation and anomaly detection. 
+    Refer to [Band Dataflow Sample Applications](/dataflow) for deployment instructions.  
  
 ## Setting Up
 
@@ -46,3 +49,6 @@ Data is available for you to query right away in
 
 4. Follow the instructions in [Band ETL Dataflow](/dataflow) to deploy the Dataflow component. Monitor 
     "verify_streaming" DAG in Airflow console, once the Dataflow job catches up the latest block, the DAG will succeed.
+    
+5. Follow the instructions in [Band Dataflow Sample Applications](https://github.com/blockchain-etl/band-dataflow-sample-applications) 
+    to deploy the Dataflow Sample Applications. 
