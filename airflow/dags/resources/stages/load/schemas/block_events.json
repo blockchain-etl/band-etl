@@ -42,11 +42,5 @@
                 "mode": "NULLABLE"
             }
         ]
-    },
-    {
-        "name": "raw_json",
-        "type": "STRING",
-        "description": "",
-        "mode": "NULLABLE"
     }
 ]

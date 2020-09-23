@@ -16,7 +16,6 @@ def map_messages(block, tx):
             'normalized_message_type': normalized_message_type,
             normalized_message_type: raw_msg.get('value'),
             'index': index,
-            # 'raw_json': json_dumps(raw_msg),
         }
 
 

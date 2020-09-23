@@ -11,5 +11,4 @@ def map_block_events(block, block_events):
             'event_type': event.get('type'),
             'block_event_type': event_type,
             'index': index,
-            # 'raw_json': json_dumps(event),
         }

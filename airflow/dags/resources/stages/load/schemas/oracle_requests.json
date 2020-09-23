@@ -241,10 +241,5 @@
                 "mode": "NULLABLE"
             }
         ]
-    },
-    {
-        "name": "raw_json",
-        "type": "STRING",
-        "mode": "NULLABLE"
     }
 ]
