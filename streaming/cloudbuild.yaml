@@ -18,7 +18,7 @@ steps:
       - install
       - https://github.com/mbenabda/helm-local-chart-version
       - --version
-      - v0.0.7
+      - v0.0.8
     id: 'add version plugin'
 
   - name: '${_REGISTRY}/$PROJECT_ID/helm'
