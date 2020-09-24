@@ -2,7 +2,7 @@ import json
 import logging
 
 from google.cloud import bigquery
-from google.api_core.exceptions import Conflict, NotFound
+from google.api_core.exceptions import Conflict, NotFound, Forbidden
 
 from bandetl_airflow.file_utils import read_file
 
@@ -15,6 +15,8 @@ def create_dataset(client, dataset_name, project=None):
         logging.info('New dataset created: ' + dataset_name)
     except Conflict as error:
         logging.info('Dataset already exists')
+    except Forbidden as error:
+        logging.info('User does not have bigquery.datasets.create permission in project')
 
     return dataset
 
