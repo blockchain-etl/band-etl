@@ -4,9 +4,6 @@ Streams Band data to [Google Pub/Sub](https://cloud.google.com/pubsub) using
 [bandetl stream](https://github.com/blockchain-etl/band-etl/tree/develop/docs/commands.md#stream). 
 Runs in Google Kubernetes Engine. 
 
-Read [this article](https://medium.com/google-cloud/live-ethereum-and-bitcoin-data-in-google-bigquery-and-pub-sub-765b71cd57b5) 
-explaining how to subscribe to public blockchain data in [Pub/Sub](https://cloud.google.com/pubsub/docs/overview). 
-
 ## Prerequisites
 
 - Kubernetes 1.8+
@@ -114,3 +111,84 @@ git push
 ```
 
 Check a [separate file](ops.md) for operations.
+
+## Subscribing to Live Band Protocol Data Feeds
+
+Install Google Cloud SDK:
+
+```bash
+curl https://sdk.cloud.google.com | bash
+exec -l $SHELL
+gcloud init
+```
+
+Create a Pub/Sub subscription for Band Protocol oracle requests:
+
+```bash
+gcloud pubsub subscriptions create crypto_band.oracle_requests.test --topic=crypto_band.oracle_requests --topic-project=public-data-finance
+```
+
+Read a single message from the subscription to test it works:
+
+```bash
+gcloud pubsub subscriptions pull crypto_band.oracle_requests.test
+```
+
+Now you can run a subscriber and process the messages in the subscription, using this Python script:
+
+`subscribe.py`:
+
+```python
+import time
+from google.cloud import pubsub_v1
+project_id = "<your_project>"
+subscription_name = "crypto_band.oracle_requests.test"
+subscriber = pubsub_v1.SubscriberClient()
+# The `subscription_path` method creates a fully qualified identifier
+# in the form `projects/{project_id}/subscriptions/{subscription_name}`
+subscription_path = subscriber.subscription_path(project_id, subscription_name)
+def callback(message):
+    print('Received message: {}'.format(message))
+    message.ack()
+subscriber.subscribe(subscription_path, callback=callback)
+# The subscriber is non-blocking. We must keep the main thread from
+# exiting to allow it to process messages asynchronously in the background.
+print('Listening for messages on {}'.format(subscription_path))
+while True:
+    time.sleep(60)
+```
+
+Make sure to provide project id in the script above
+
+Install the dependencies and run the script:
+
+```bash
+pip install google-cloud-pubsub==1.0.1
+python subscribe.py
+```
+
+You should see:
+
+```
+Received message: Message {
+  data: b'{"request": {"oracle_script_id": "13", "calldata":...'
+  attributes: {
+    "item_id": "oracle_request_283283"
+  }
+}
+Received message: Message {
+  data: b'{"request": {"oracle_script_id": "1", "calldata": ...'
+  attributes: {
+    "item_id": "oracle_request_283277"
+  }
+}
+...
+```
+
+You can also use Go, Java, Node.js or C#: https://cloud.google.com/pubsub/docs/pull.
+
+Delete the subscription if you don't need it:
+
+```bash
+gcloud pubsub subscriptions delete crypto_band.oracle_requests.test
+```
