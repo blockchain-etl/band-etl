@@ -27,14 +27,16 @@ def create_item_exporter(output):
     item_exporter_type = determine_item_exporter_type(output)
     if item_exporter_type == ItemExporterType.PUBSUB:
         from blockchainetl_common.jobs.exporters.google_pubsub_item_exporter import GooglePubSubItemExporter
-        item_exporter = GooglePubSubItemExporter(item_type_to_topic_mapping={
-            'block': output + '.blocks',
-            'transaction': output + '.transactions',
-            'message': output + '.messages',
-            'log': output + '.logs',
-            'block_event': output + '.block_events',
-            'oracle_request': output + '.oracle_requests',
-        })
+        item_exporter = GooglePubSubItemExporter(
+            item_type_to_topic_mapping={
+                'block': output + '.blocks',
+                'transaction': output + '.transactions',
+                'message': output + '.messages',
+                'log': output + '.logs',
+                'block_event': output + '.block_events',
+                'oracle_request': output + '.oracle_requests',
+            },
+            message_attributes=('item_id',))
     elif item_exporter_type == ItemExporterType.CONSOLE:
         item_exporter = ConsoleItemExporter()
     else:
