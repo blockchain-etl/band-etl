@@ -200,6 +200,7 @@ def build_load_dag(
 
     verify_blocks_count_task = add_verify_tasks('blocks_count', dependencies=[merge_blocks_task])
     verify_blocks_have_latest_task = add_verify_tasks('blocks_have_latest', dependencies=[merge_blocks_task])
+    verify_transactions_have_no_duplicates_task = add_verify_tasks('transactions_have_no_duplicates')
 
     if success_notification_emails and len(success_notification_emails) > 0:
         send_email_task = EmailOperator(
@@ -211,7 +212,12 @@ def build_load_dag(
         )
 
         merge_oracle_requests_task >> send_email_task
+        merge_transactions_task >> send_email_task
+        merge_messages_task >> send_email_task
+        merge_logs_task >> send_email_task
+        merge_block_events_task >> send_email_task
         verify_blocks_count_task >> send_email_task
         verify_blocks_have_latest_task >> send_email_task
+        verify_transactions_have_no_duplicates_task >> send_email_task
 
     return dag
