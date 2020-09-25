@@ -11,7 +11,7 @@ long_description = read('README.md') if os.path.isfile("README.md") else ""
 
 setup(
     name='band-etl',
-    version='0.0.8',
+    version='1.0.0',
     author='Evgeny Medvedev',
     author_email='evge.medvedev@gmail.com',
     description='Tools for exporting Band Protocol blockchain data to JSON',
