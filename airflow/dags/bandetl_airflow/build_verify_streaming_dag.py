@@ -73,6 +73,7 @@ def build_verify_streaming_dag(
     add_verify_tasks('oracle_requests_have_latest')
     add_verify_tasks('blocks_count')
     add_verify_tasks('errors_count')
+    add_verify_tasks('transactions_have_no_duplicates')
 
     return dag
 
