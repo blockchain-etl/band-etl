@@ -10,7 +10,7 @@ into BigQuery and Pub/Sub. It comes with [CLI tools](/cli) for exporting Band da
 partitioned by day. 
 
 Data is available for you to query right away in 
-[Google BigQuery](https://console.cloud.google.com/bigquery?page=dataset&d=mainnet&p=band-etl).
+[Google BigQuery](https://console.cloud.google.com/bigquery?page=dataset&d=crypto_band&p=public-data-finance).
 
 ## Architecture
 
