@@ -18,7 +18,7 @@ def build_verify_streaming_dag(
         notification_emails=None,
         start_date=datetime(2019, 4, 22),
         schedule_interval='*/10 * * * *',
-        max_lag_in_minutes=10):
+        max_lag_in_minutes=3):
     dataset_name = f'crypto_{chain}'
 
     environment = {
