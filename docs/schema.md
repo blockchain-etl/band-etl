@@ -220,38 +220,6 @@
 |  |- validator_address: string
 ```
 
-All message types:
-
-```
-oracle_Activate 
-oracle_AddReporter
-oracle_CreateDataSource
-oracle_CreateOracleScript
-oracle_EditDataSource
-oracle_EditOracleScript
-oracle_Report
-oracle_Request
-oracle_RemoveReporter
-
-cosmos_sdk_MsgBeginRedelegate 
-cosmos_sdk_MsgCreateValidator 
-cosmos_sdk_MsgDelegate 
-cosmos_sdk_MsgDeposit 
-cosmos_sdk_MsgEditValidator 
-cosmos_sdk_MsgFundCommunityPool 
-cosmos_sdk_MsgModifyWithdrawAddress 
-cosmos_sdk_MsgMultiSend 
-cosmos_sdk_MsgSend 
-cosmos_sdk_MsgSubmitEvidence 
-cosmos_sdk_MsgSubmitProposal 
-cosmos_sdk_MsgUndelegate 
-cosmos_sdk_MsgUnjail 
-cosmos_sdk_MsgVerifyInvariant 
-cosmos_sdk_MsgVote 
-cosmos_sdk_MsgWithdrawDelegationReward
-cosmos_sdk_MsgWithdrawValidatorCommission
-```
-
 ## oracle_requests
 
 ```
@@ -313,6 +281,3 @@ cosmos_sdk_MsgWithdrawValidatorCommission
  |  |- key: string
  |  |- value: string
 ```
-
-TODO: Add schema for messages from x/oracle/types/types.proto for Band types, x/bank/types/tx.pb.go etc. for  
-Cosmos SDK types.
