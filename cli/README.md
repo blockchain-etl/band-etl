@@ -1,11 +1,11 @@
 # Band Protocol ETL CLI
 
-[![Build Status](https://travis-ci.org/blockchain-etl/band-protocol-etl.svg?branch=master)](https://travis-ci.org/blockchain-etl/band-protocol-etl)
+[![Build Status](https://travis-ci.org/blockchain-etl/band-etl.svg?branch=master)](https://travis-ci.org/blockchain-etl/band-etl)
 [![Telegram](https://img.shields.io/badge/telegram-join%20chat-blue.svg)](https://t.me/joinchat/GsMpbA3mv1OJ6YMp3T5ORQ)
 
 Band Protocol ETL CLI lets you convert Band Protocol data into JSON newline-delimited format.
 
-[Full documentation available here](http://band-protocol-etl.readthedocs.io/).
+[Full documentation available here](http://band-etl.readthedocs.io/).
 
 ## Quickstart
 
