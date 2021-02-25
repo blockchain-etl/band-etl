@@ -574,17 +574,17 @@
                 "fields": [
                     {
                         "name": "rate",
-                        "type": "INTEGER",
+                        "type": "STRING",
                         "mode": "NULLABLE"
                     },
                     {
                         "name": "max_rate",
-                        "type": "INTEGER",
+                        "type": "STRING",
                         "mode": "NULLABLE"
                     },
                     {
                         "name": "max_change_rate",
-                        "type": "INTEGER",
+                        "type": "STRING",
                         "mode": "NULLABLE"
                     }
                 ]
