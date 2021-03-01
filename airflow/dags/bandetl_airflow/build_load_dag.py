@@ -200,7 +200,7 @@ def build_load_dag(
 
     verify_blocks_count_task = add_verify_tasks('blocks_count', dependencies=[merge_blocks_task])
     verify_blocks_have_latest_task = add_verify_tasks('blocks_have_latest', dependencies=[merge_blocks_task])
-    verify_transactions_have_no_duplicates_task = add_verify_tasks('transactions_have_no_duplicates')
+    verify_transactions_have_no_duplicates_task = add_verify_tasks('transactions_have_no_duplicates', dependencies=[merge_transactions_task])
 
     if success_notification_emails and len(success_notification_emails) > 0:
         send_email_task = EmailOperator(
